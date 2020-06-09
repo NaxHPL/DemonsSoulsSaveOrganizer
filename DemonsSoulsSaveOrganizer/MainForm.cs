@@ -374,9 +374,7 @@ namespace DemonsSoulsSaveOrganizer {
             DirectoryInfo newDir = Directory.CreateDirectory(Path.Combine(destinationPath, sourceDir.Name));
 
             foreach (FileInfo file in sourceDir.GetFiles()) {
-                if (!file.Name.Equals("USER.DAT", StringComparison.OrdinalIgnoreCase)) {
-                    file.CopyTo(Path.Combine(newDir.FullName, file.Name), true);
-                }
+                file.CopyTo(Path.Combine(newDir.FullName, file.Name), true);
             }
         }
 
