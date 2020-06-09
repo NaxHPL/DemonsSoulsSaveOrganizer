@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("DemonsSoulsSaveOrganizer")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Demons Souls Save Organizer")]
+[assembly: AssemblyDescription("A tool for managing Demon's Souls save files.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("DemonsSoulsSaveOrganizer")]
-[assembly: AssemblyCopyright("Copyright ©  2020")]
+[assembly: AssemblyCompany("NaxHPL")]
+[assembly: AssemblyProduct("Demons Souls Save Organizer")]
+[assembly: AssemblyCopyright("Copyright © 2020 Alexander Steffler")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -33,4 +33,4 @@ using System.Runtime.InteropServices;
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyFileVersion("1.0")]
