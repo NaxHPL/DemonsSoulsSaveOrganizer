@@ -42,14 +42,14 @@
             this.cmsSavestates = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmiRenameSavestate = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDeleteSavestate = new System.Windows.Forms.ToolStripMenuItem();
-            this.csmProfiles = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.cmsProfiles = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmiRenameProfile = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDeleteProfile = new System.Windows.Forms.ToolStripMenuItem();
             this.grbSetup.SuspendLayout();
             this.grbProfiles.SuspendLayout();
             this.grbSavestates.SuspendLayout();
             this.cmsSavestates.SuspendLayout();
-            this.csmProfiles.SuspendLayout();
+            this.cmsProfiles.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblProfilesDir
@@ -152,6 +152,7 @@
             this.lstProfiles.Size = new System.Drawing.Size(148, 242);
             this.lstProfiles.TabIndex = 7;
             this.lstProfiles.SelectedIndexChanged += new System.EventHandler(this.lstProfiles_SelectedIndexChanged);
+            this.lstProfiles.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lstProfiles_MouseUp);
             // 
             // btnAddProfile
             // 
@@ -250,14 +251,14 @@
             this.tsmiDeleteSavestate.Size = new System.Drawing.Size(136, 22);
             this.tsmiDeleteSavestate.Text = "Delete";
             // 
-            // csmProfiles
+            // cmsProfiles
             // 
-            this.csmProfiles.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cmsProfiles.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiRenameProfile,
             this.tsmiDeleteProfile});
-            this.csmProfiles.Name = "cmsSavestates";
-            this.csmProfiles.Size = new System.Drawing.Size(137, 48);
-            this.csmProfiles.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.csmProfiles_ItemClicked);
+            this.cmsProfiles.Name = "cmsSavestates";
+            this.cmsProfiles.Size = new System.Drawing.Size(181, 70);
+            this.cmsProfiles.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.csmProfiles_ItemClicked);
             // 
             // tsmiRenameProfile
             // 
@@ -293,7 +294,7 @@
             this.grbProfiles.ResumeLayout(false);
             this.grbSavestates.ResumeLayout(false);
             this.cmsSavestates.ResumeLayout(false);
-            this.csmProfiles.ResumeLayout(false);
+            this.cmsProfiles.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -319,7 +320,7 @@
         private System.Windows.Forms.ContextMenuStrip cmsSavestates;
         private System.Windows.Forms.ToolStripMenuItem tsmiRenameSavestate;
         private System.Windows.Forms.ToolStripMenuItem tsmiDeleteSavestate;
-        private System.Windows.Forms.ContextMenuStrip csmProfiles;
+        private System.Windows.Forms.ContextMenuStrip cmsProfiles;
         private System.Windows.Forms.ToolStripMenuItem tsmiRenameProfile;
         private System.Windows.Forms.ToolStripMenuItem tsmiDeleteProfile;
     }

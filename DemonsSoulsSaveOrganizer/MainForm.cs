@@ -89,15 +89,43 @@ namespace DemonsSoulsSaveOrganizer {
         }
 
         private void csmProfiles_ItemClicked(object sender, ToolStripItemClickedEventArgs e) {
-
+            if (e.ClickedItem == tsmiRenameProfile) {
+                EditProfile(currentlySelectedProfile);
+            }
+            else if (e.ClickedItem == tsmiDeleteProfile) {
+                cmsProfiles.Close();
+                DeleteProfile(currentlySelectedProfile);
+            }
         }
 
         private void trvSavestates_MouseUp(object sender, MouseEventArgs e) {
             if (e.Button == MouseButtons.Right) {
-                trvSavestates.SelectedNode = trvSavestates.GetNodeAt(e.X, e.Y);
+                TreeNode clickedNode = trvSavestates.GetNodeAt(e.X, e.Y);
+
+                if (clickedNode == null) {
+                    return;
+                }
+
+                trvSavestates.SelectedNode = clickedNode;
 
                 if (trvSavestates.SelectedNode != null) {
                     cmsSavestates.Show(trvSavestates, e.Location);
+                }
+            }
+        }
+
+        private void lstProfiles_MouseUp(object sender, MouseEventArgs e) {
+            if (e.Button == MouseButtons.Right) {
+                int clickedIndex = lstProfiles.IndexFromPoint(e.X, e.Y);
+
+                if (clickedIndex == -1) {
+                    return;
+                }
+
+                lstProfiles.SelectedIndex = clickedIndex;
+
+                if (lstProfiles.SelectedIndex >= 0) {
+                    cmsProfiles.Show(lstProfiles, e.Location);
                 }
             }
         }
@@ -217,6 +245,7 @@ namespace DemonsSoulsSaveOrganizer {
             using (NameEditForm nameEditForm = new NameEditForm($"Edit {profileToEdit.DisplayName}", "Profile Name:", profileToEdit.DisplayName)) {
                 if (nameEditForm.ShowDialog() == DialogResult.OK) {
                     profileToEdit.ChangeName(nameEditForm.InputtedName);
+                    lstProfiles.Items[lstProfiles.SelectedIndex] = currentlySelectedProfile;
                 }
             }
         }
@@ -227,14 +256,13 @@ namespace DemonsSoulsSaveOrganizer {
             if (result == DialogResult.Yes) {
                 try {
                     Directory.Delete(profileToDelete.FullPath, true);
+                    RefreshProfilesList();
                 }
                 catch (Exception e) {
                     MessageBox.Show($"An error occured while deleting the profile:\n\n{e.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
             }
-
-            RefreshProfilesList();
         }
 
         private void FillSavestates(Profile profile) {
@@ -254,7 +282,6 @@ namespace DemonsSoulsSaveOrganizer {
             trvSavestates.Sort();
 
             if (trvSavestates.Nodes.Count > 0) {
-                trvSavestates.Select();
                 trvSavestates.SelectedNode = trvSavestates.Nodes[0];
             }
         }
@@ -341,23 +368,22 @@ namespace DemonsSoulsSaveOrganizer {
             if (result == DialogResult.Yes) {
                 try {
                     Directory.Delete(savestate.FullPath, true);
+                    currentlySelectedProfile.RemoveSavestate(savestate);
+                    FillSavestates(currentlySelectedProfile);
+                    trvSavestates.Select();
                 }
                 catch (Exception e) {
                     MessageBox.Show($"An error occured while deleting the savestate:\n\n{e.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
             }
-
-            currentlySelectedProfile.RemoveSavestate(savestate);
-            FillSavestates(currentlySelectedProfile);
         }
 
         private void HandleProfileKeyShortcuts(Keys key) {
-            if (key == Keys.F2 && lstProfiles.SelectedIndex > 0) {
+            if (key == Keys.F2 && lstProfiles.SelectedIndex >= 0) {
                 EditProfile(currentlySelectedProfile);
-                lstProfiles.Items[lstProfiles.SelectedIndex] = currentlySelectedProfile;
             }
-            else if (key == Keys.Delete && lstProfiles.SelectedIndex > 0) {
+            else if (key == Keys.Delete && lstProfiles.SelectedIndex >= 0) {
                 DeleteProfile(currentlySelectedProfile);
             }
         }
