@@ -53,23 +53,6 @@ namespace DemonsSoulsSaveOrganizer {
             }
         }
 
-        private void btnEditProfile_Click(object sender, EventArgs e) {
-            if (lstProfiles.SelectedIndex == -1) {
-                return;
-            }
-
-            EditProfile(currentlySelectedProfile);
-            lstProfiles.Items[lstProfiles.SelectedIndex] = currentlySelectedProfile;
-        }
-
-        private void btnDeleteProfile_Click(object sender, EventArgs e) {
-            if (lstProfiles.SelectedIndex == -1) {
-                return;
-            }
-
-            DeleteProfile(currentlySelectedProfile);
-        }
-
         private void lstProfiles_SelectedIndexChanged(object sender, EventArgs e) {
             if (lstProfiles.SelectedIndex == -1 || currentlySelectedProfile == (Profile)lstProfiles.SelectedItem) {
                 return;
@@ -105,6 +88,10 @@ namespace DemonsSoulsSaveOrganizer {
             }
         }
 
+        private void csmProfiles_ItemClicked(object sender, ToolStripItemClickedEventArgs e) {
+
+        }
+
         private void trvSavestates_MouseUp(object sender, MouseEventArgs e) {
             if (e.Button == MouseButtons.Right) {
                 trvSavestates.SelectedNode = trvSavestates.GetNodeAt(e.X, e.Y);
@@ -116,15 +103,11 @@ namespace DemonsSoulsSaveOrganizer {
         }
 
         private void MainForm_KeyDown(object sender, KeyEventArgs e) {
-            if (e.KeyCode == Keys.F2 && trvSavestates.Focused) {
-                if (trvSavestates.SelectedNode != null) {
-                    RenameSavestate((Savestate)trvSavestates.SelectedNode.Tag);
-                }
+            if (trvSavestates.Focused) {
+                HandleSavestateKeyShortcuts(e.KeyCode);
             }
-            else if (e.KeyCode == Keys.Delete && trvSavestates.Focused) {
-                if (trvSavestates.SelectedNode != null) {
-                    DeleteSavestate((Savestate)trvSavestates.SelectedNode.Tag);
-                }
+            else if (lstProfiles.Focused) {
+                HandleProfileKeyShortcuts(e.KeyCode);
             }
         }
 
@@ -271,7 +254,7 @@ namespace DemonsSoulsSaveOrganizer {
             trvSavestates.Sort();
 
             if (trvSavestates.Nodes.Count > 0) {
-                trvSavestates.Focus();
+                trvSavestates.Select();
                 trvSavestates.SelectedNode = trvSavestates.Nodes[0];
             }
         }
@@ -297,7 +280,7 @@ namespace DemonsSoulsSaveOrganizer {
             };
 
             trvSavestates.Nodes.Add(node);
-            trvSavestates.Focus();
+            trvSavestates.Select();
             trvSavestates.SelectedNode = node;
         }
 
@@ -367,6 +350,25 @@ namespace DemonsSoulsSaveOrganizer {
 
             currentlySelectedProfile.RemoveSavestate(savestate);
             FillSavestates(currentlySelectedProfile);
+        }
+
+        private void HandleProfileKeyShortcuts(Keys key) {
+            if (key == Keys.F2 && lstProfiles.SelectedIndex > 0) {
+                EditProfile(currentlySelectedProfile);
+                lstProfiles.Items[lstProfiles.SelectedIndex] = currentlySelectedProfile;
+            }
+            else if (key == Keys.Delete && lstProfiles.SelectedIndex > 0) {
+                DeleteProfile(currentlySelectedProfile);
+            }
+        }
+
+        private void HandleSavestateKeyShortcuts(Keys key) {
+            if (key == Keys.F2 && trvSavestates.SelectedNode != null) {
+                RenameSavestate((Savestate)trvSavestates.SelectedNode.Tag);
+            }
+            else if (key == Keys.Delete && trvSavestates.SelectedNode != null) {
+                DeleteSavestate((Savestate)trvSavestates.SelectedNode.Tag);
+            }
         }
     }
 }
