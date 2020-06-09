@@ -40,7 +40,9 @@ namespace DemonsSoulsSaveOrganizer {
         }
 
         private void hlkAbout_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) {
-            Process.Start(settings.AboutLink);
+            using (AboutForm aboutForm = new AboutForm()) {
+                aboutForm.ShowDialog();
+            }
         }
 
         private void btnAddProfile_Click(object sender, EventArgs e) {

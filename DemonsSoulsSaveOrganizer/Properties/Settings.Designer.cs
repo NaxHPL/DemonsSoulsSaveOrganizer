@@ -50,9 +50,18 @@ namespace DemonsSoulsSaveOrganizer.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("https://github.com/NaxHPL/DemonsSoulsSaveOrganizer")]
-        public string AboutLink {
+        public string GithubRepository {
             get {
-                return ((string)(this["AboutLink"]));
+                return ((string)(this["GithubRepository"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://twitter.com/NaxHPL")]
+        public string TwitterLink {
+            get {
+                return ((string)(this["TwitterLink"]));
             }
         }
     }

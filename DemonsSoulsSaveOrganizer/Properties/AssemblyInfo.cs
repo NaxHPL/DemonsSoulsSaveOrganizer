@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Demons Souls Save Organizer")]
+[assembly: AssemblyTitle("Demon's Souls Save Organizer")]
 [assembly: AssemblyDescription("A tool for managing Demon's Souls save files.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("NaxHPL")]
-[assembly: AssemblyProduct("Demons Souls Save Organizer")]
+[assembly: AssemblyProduct("Demon's Souls Save Organizer")]
 [assembly: AssemblyCopyright("Copyright © 2020 Alexander Steffler")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
