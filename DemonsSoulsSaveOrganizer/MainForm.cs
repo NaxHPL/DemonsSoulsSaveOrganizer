@@ -16,12 +16,14 @@ namespace DemonsSoulsSaveOrganizer {
             InitializeComponent();
             InitializeDirectories();
             RefreshProfilesList();
+
+            trvSavestates.Select();
         }
 
         #region Event methods
 
         private void btnBrowseProfilesDir_Click(object sender, EventArgs e) {
-            string profilesPath = PromptForDirectory();
+            string profilesPath = PromptForDirectory("Browse for profile directory.");
 
             if (!string.IsNullOrWhiteSpace(profilesPath)) {
                 SetProfilesDirectory(profilesPath, true);
@@ -30,7 +32,7 @@ namespace DemonsSoulsSaveOrganizer {
         }
 
         private void btnBrowseSavefileDir_Click(object sender, EventArgs e) {
-            string savefilePath = PromptForDirectory();
+            string savefilePath = PromptForDirectory("Browse for savefile directory.");
 
             if (!string.IsNullOrWhiteSpace(savefilePath)) {
                 SetSavefileDirectory(savefilePath, true);
@@ -43,6 +45,12 @@ namespace DemonsSoulsSaveOrganizer {
 
         private void btnAddProfile_Click(object sender, EventArgs e) {
             if (string.IsNullOrWhiteSpace(settings.ProfilesDirectory)) {
+                DialogResult result = MessageBox.Show("Please setup your profile directory before creating profiles.", "Setup Required", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                
+                if (result == DialogResult.OK) {
+                    btnBrowseProfilesDir.PerformClick();
+                }
+                
                 return;
             }
 
@@ -63,7 +71,17 @@ namespace DemonsSoulsSaveOrganizer {
         }
 
         private void btnImportSavestate_Click(object sender, EventArgs e) {
-            if (lstProfiles.SelectedIndex == -1 || string.IsNullOrWhiteSpace(settings.SavefileDirectory)) {
+            if (string.IsNullOrWhiteSpace(settings.SavefileDirectory)) {
+                DialogResult result = MessageBox.Show("Please setup your savefile directory before importing savestates.", "Setup Required", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+
+                if (result == DialogResult.OK) {
+                    btnBrowseSavefileDir.PerformClick();
+                }
+
+                return;
+            }
+
+            if (lstProfiles.SelectedIndex == -1) {
                 return;
             }
 
@@ -71,7 +89,17 @@ namespace DemonsSoulsSaveOrganizer {
         }
 
         private void btnLoadSavestate_Click(object sender, EventArgs e) {
-            if (trvSavestates.SelectedNode == null || string.IsNullOrWhiteSpace(settings.SavefileDirectory)) {
+            if (string.IsNullOrWhiteSpace(settings.SavefileDirectory)) {
+                DialogResult result = MessageBox.Show("Please setup your savefile directory before loading savestates.", "Setup Required", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+
+                if (result == DialogResult.OK) {
+                    btnBrowseSavefileDir.PerformClick();
+                }
+
+                return;
+            }
+
+            if (trvSavestates.SelectedNode == null) {
                 return;
             }
 
@@ -157,8 +185,10 @@ namespace DemonsSoulsSaveOrganizer {
             }
         }
 
-        private string PromptForDirectory() {
+        private string PromptForDirectory(string description) {
             using (FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog()) {
+                folderBrowserDialog.Description = description;
+
                 if (folderBrowserDialog.ShowDialog() == DialogResult.OK) {
                     return folderBrowserDialog.SelectedPath;
                 }
