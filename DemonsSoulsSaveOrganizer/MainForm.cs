@@ -11,7 +11,6 @@ namespace DemonsSoulsSaveOrganizer {
         private readonly Properties.Settings settings = Properties.Settings.Default;
 
         private Profile currentlySelectedProfile;
-        private string saveFolderName;
 
         public MainForm() {
             InitializeComponent();
@@ -57,6 +56,10 @@ namespace DemonsSoulsSaveOrganizer {
         }
 
         private void btnAddProfile_Click(object sender, EventArgs e) {
+            if (string.IsNullOrWhiteSpace(settings.ProfilesDirectory)) {
+                return;
+            }
+
             using (ProfileEditForm profileEditForm = new ProfileEditForm("New Profile", string.Empty)) {
                 if (profileEditForm.ShowDialog() == DialogResult.OK) {
                     CreateProfile(profileEditForm.ProfileName);
@@ -129,7 +132,6 @@ namespace DemonsSoulsSaveOrganizer {
         
         private void SetSavefileDirectory(string dir, bool saveSettings = false) {
             txtSavefileDir.Text = dir;
-            saveFolderName = new DirectoryInfo(dir).Name;
 
             if (saveSettings) {
                 settings.SavefileDirectory = dir;
@@ -296,7 +298,7 @@ namespace DemonsSoulsSaveOrganizer {
             try {
                 Directory.Delete(settings.SavefileDirectory, true);
                 Directory.CreateDirectory(settings.SavefileDirectory);
-                CopySaveFolderAndContents(Path.Combine(savestate.FullPath, saveFolderName), new DirectoryInfo(settings.SavefileDirectory).Parent.FullName);
+                CopySaveFolderAndContents(Path.Combine(savestate.FullPath, new DirectoryInfo(settings.SavefileDirectory).Name), new DirectoryInfo(settings.SavefileDirectory).Parent.FullName);
             }
             catch (Exception e) {
                 MessageBox.Show($"An error occured while loading the savestate:\n\n{e.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
