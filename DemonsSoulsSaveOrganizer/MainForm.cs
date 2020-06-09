@@ -115,6 +115,14 @@ namespace DemonsSoulsSaveOrganizer {
             }
         }
 
+        private void MainForm_KeyDown(object sender, KeyEventArgs e) {
+            if (e.KeyCode == Keys.F2 && trvSavestates.Focused) {
+                if (trvSavestates.SelectedNode != null) {
+                    RenameSavestate((Savestate)trvSavestates.SelectedNode.Tag);
+                }
+            }
+        }
+
         #endregion
 
         private void InitializeDirectories() {

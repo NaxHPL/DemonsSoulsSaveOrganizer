@@ -279,10 +279,12 @@
             this.Controls.Add(this.grbSavestates);
             this.Controls.Add(this.grbProfiles);
             this.Controls.Add(this.grbSetup);
+            this.KeyPreview = true;
             this.MinimumSize = new System.Drawing.Size(536, 287);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Demon\'s Souls Save Organizer";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
             this.grbSetup.ResumeLayout(false);
             this.grbSetup.PerformLayout();
             this.grbProfiles.ResumeLayout(false);
