@@ -232,10 +232,7 @@ namespace DemonsSoulsSaveOrganizer {
             }
 
             lstProfiles.EndUpdate();
-
-            if (lstProfiles.Items.Count > 0) {
-                lstProfiles.SelectedIndex = 0;
-            }
+            lstProfiles.SelectedIndex = lstProfiles.Items.Count > 0 ? 0 : -1;
         }
 
         private List<Savestate> GetSavestatesInDirectory(string directory) {
@@ -287,6 +284,10 @@ namespace DemonsSoulsSaveOrganizer {
                 try {
                     Directory.Delete(profileToDelete.FullPath, true);
                     RefreshProfilesList();
+
+                    if (lstProfiles.Items.Count == 0) {
+                        ClearSavestates();
+                    }
                 }
                 catch (Exception e) {
                     MessageBox.Show($"An error occured while deleting the profile:\n\n{e.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -314,6 +315,10 @@ namespace DemonsSoulsSaveOrganizer {
             if (trvSavestates.Nodes.Count > 0) {
                 trvSavestates.SelectedNode = trvSavestates.Nodes[0];
             }
+        }
+
+        private void ClearSavestates() {
+            trvSavestates.Nodes.Clear();
         }
 
         private void ImportSavestate(Profile profile) {
