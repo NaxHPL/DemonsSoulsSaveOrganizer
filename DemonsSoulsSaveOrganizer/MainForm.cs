@@ -121,6 +121,11 @@ namespace DemonsSoulsSaveOrganizer {
                     RenameSavestate((Savestate)trvSavestates.SelectedNode.Tag);
                 }
             }
+            else if (e.KeyCode == Keys.Delete && trvSavestates.Focused) {
+                if (trvSavestates.SelectedNode != null) {
+                    DeleteSavestate((Savestate)trvSavestates.SelectedNode.Tag);
+                }
+            }
         }
 
         #endregion
