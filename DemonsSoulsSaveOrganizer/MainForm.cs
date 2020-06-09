@@ -94,7 +94,7 @@ namespace DemonsSoulsSaveOrganizer {
         }
 
         private void btnImportSavestate_Click(object sender, EventArgs e) {
-            if (lstProfiles.SelectedIndex == -1) {
+            if (lstProfiles.SelectedIndex == -1 || string.IsNullOrWhiteSpace(settings.SavefileDirectory)) {
                 return;
             }
 
@@ -102,7 +102,7 @@ namespace DemonsSoulsSaveOrganizer {
         }
 
         private void btnLoadSavestate_Click(object sender, EventArgs e) {
-            if (trvSavestates.SelectedNode == null) {
+            if (trvSavestates.SelectedNode == null || string.IsNullOrWhiteSpace(settings.SavefileDirectory)) {
                 return;
             }
 
