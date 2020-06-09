@@ -40,7 +40,15 @@ namespace DemonsSoulsSaveOrganizer {
         }
 
         public void AddSavestate(Savestate savestate) {
-            savestates.Add(savestate);
+            if (!savestates.Contains(savestate)) {
+                savestates.Add(savestate);
+            }
+        }
+
+        public void RemoveSavestate(Savestate savestate) {
+            if (savestates.Contains(savestate)) {
+                savestates.Remove(savestate);
+            }
         }
     }
 }

@@ -48,7 +48,7 @@ namespace DemonsSoulsSaveOrganizer {
 
             using (NameEditForm nameEditForm = new NameEditForm("New Profile", "Profile Name:", string.Empty)) {
                 if (nameEditForm.ShowDialog() == DialogResult.OK) {
-                    CreateProfile(nameEditForm.ProfileName);
+                    CreateProfile(nameEditForm.InputtedName);
                 }
             }
         }
@@ -98,6 +98,10 @@ namespace DemonsSoulsSaveOrganizer {
         private void cmsSavestates_ItemClicked(object sender, ToolStripItemClickedEventArgs e) {
             if (e.ClickedItem == tsmiRenameSavestate) {
                 RenameSavestate((Savestate)trvSavestates.SelectedNode.Tag);
+            }
+            else if (e.ClickedItem == tsmiDeleteSavestate) {
+                cmsSavestates.Close();
+                DeleteSavestate((Savestate)trvSavestates.SelectedNode.Tag);
             }
         }
 
@@ -216,13 +220,13 @@ namespace DemonsSoulsSaveOrganizer {
         private void EditProfile(Profile profileToEdit) {
             using (NameEditForm nameEditForm = new NameEditForm($"Edit {profileToEdit.DisplayName}", "Profile Name:", profileToEdit.DisplayName)) {
                 if (nameEditForm.ShowDialog() == DialogResult.OK) {
-                    profileToEdit.ChangeName(nameEditForm.ProfileName);
+                    profileToEdit.ChangeName(nameEditForm.InputtedName);
                 }
             }
         }
 
         private void DeleteProfile(Profile profileToDelete) {
-            DialogResult result = MessageBox.Show($"Are you sure you want to delete \"{profileToDelete.DisplayName}\" and all of its contents?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            DialogResult result = MessageBox.Show($"Are you sure you want to delete \"{profileToDelete.DisplayName}\" and all of its contents?", "Delete Profile", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
             if (result == DialogResult.Yes) {
                 try {
@@ -250,6 +254,8 @@ namespace DemonsSoulsSaveOrganizer {
             }
 
             trvSavestates.EndUpdate();
+
+            trvSavestates.Sort();
 
             if (trvSavestates.Nodes.Count > 0) {
                 trvSavestates.Focus();
@@ -324,7 +330,30 @@ namespace DemonsSoulsSaveOrganizer {
         }
 
         private void RenameSavestate(Savestate savestate) {
-            
+            using (NameEditForm nameEditForm = new NameEditForm($"Edit {savestate.DisplayName}", "Savestate Name:", savestate.DisplayName)) {
+                if (nameEditForm.ShowDialog() == DialogResult.OK) {
+                    savestate.ChangeName(nameEditForm.InputtedName);
+                    trvSavestates.SelectedNode.Text = nameEditForm.InputtedName;
+                    trvSavestates.Sort();
+                }
+            }
+        }
+
+        private void DeleteSavestate(Savestate savestate) {
+            DialogResult result = MessageBox.Show($"Are you sure you want to delete \"{savestate.DisplayName}\"?", "Delete Savestate", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (result == DialogResult.Yes) {
+                try {
+                    Directory.Delete(savestate.FullPath, true);
+                }
+                catch (Exception e) {
+                    MessageBox.Show($"An error occured while deleting the savestate:\n\n{e.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+
+            currentlySelectedProfile.RemoveSavestate(savestate);
+            FillSavestates(currentlySelectedProfile);
         }
     }
 }

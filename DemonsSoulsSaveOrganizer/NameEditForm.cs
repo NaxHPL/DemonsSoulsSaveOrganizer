@@ -8,7 +8,7 @@ namespace DemonsSoulsSaveOrganizer {
         private static readonly char[] invalidCharacters = { '<', '>', ':', '"', '/', '\\', '|', '?', '*' };
         private static readonly Properties.Settings settings = Properties.Settings.Default;
 
-        public string ProfileName { get; set; }
+        public string InputtedName { get; set; }
 
         public NameEditForm(string formTitle, string label, string textBoxText) {
             InitializeComponent();
@@ -32,7 +32,7 @@ namespace DemonsSoulsSaveOrganizer {
                 return;
             }
 
-            ProfileName = txtName.Text;
+            InputtedName = txtName.Text;
             DialogResult = DialogResult.OK;
             Close();
         }
