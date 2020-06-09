@@ -1,5 +1,5 @@
 ﻿namespace DemonsSoulsSaveOrganizer {
-    partial class ProfileEditForm {
+    partial class NameEditForm {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -23,28 +23,28 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.lblProfileName = new System.Windows.Forms.Label();
-            this.txtProfileName = new System.Windows.Forms.TextBox();
+            this.lblName = new System.Windows.Forms.Label();
+            this.txtName = new System.Windows.Forms.TextBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOk = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // lblProfileName
+            // lblName
             // 
-            this.lblProfileName.AutoSize = true;
-            this.lblProfileName.Location = new System.Drawing.Point(12, 9);
-            this.lblProfileName.Name = "lblProfileName";
-            this.lblProfileName.Size = new System.Drawing.Size(70, 13);
-            this.lblProfileName.TabIndex = 0;
-            this.lblProfileName.Text = "Profile Name:";
+            this.lblName.AutoSize = true;
+            this.lblName.Location = new System.Drawing.Point(12, 9);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(38, 13);
+            this.lblName.TabIndex = 0;
+            this.lblName.Text = "Name:";
             // 
-            // txtProfileName
+            // txtName
             // 
-            this.txtProfileName.Location = new System.Drawing.Point(15, 25);
-            this.txtProfileName.MaxLength = 250;
-            this.txtProfileName.Name = "txtProfileName";
-            this.txtProfileName.Size = new System.Drawing.Size(316, 20);
-            this.txtProfileName.TabIndex = 1;
+            this.txtName.Location = new System.Drawing.Point(15, 25);
+            this.txtName.MaxLength = 250;
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(316, 20);
+            this.txtName.TabIndex = 1;
             // 
             // btnCancel
             // 
@@ -67,7 +67,7 @@
             this.btnOk.UseVisualStyleBackColor = true;
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
-            // ProfileEditForm
+            // NameEditForm
             // 
             this.AcceptButton = this.btnOk;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -76,15 +76,15 @@
             this.ClientSize = new System.Drawing.Size(343, 82);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.txtProfileName);
-            this.Controls.Add(this.lblProfileName);
+            this.Controls.Add(this.txtName);
+            this.Controls.Add(this.lblName);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "ProfileEditForm";
+            this.Name = "NameEditForm";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "ProfileEditForm";
+            this.Text = "NameEditForm";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -92,8 +92,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Label lblProfileName;
-        private System.Windows.Forms.TextBox txtProfileName;
+        private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnOk;
     }

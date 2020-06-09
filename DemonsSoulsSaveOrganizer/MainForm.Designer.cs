@@ -23,6 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container();
             this.lblProfilesDir = new System.Windows.Forms.Label();
             this.txtProfilesDir = new System.Windows.Forms.TextBox();
             this.btnBrowseProfilesDir = new System.Windows.Forms.Button();
@@ -40,9 +41,13 @@
             this.btnImportSavestate = new System.Windows.Forms.Button();
             this.trvSavestates = new System.Windows.Forms.TreeView();
             this.hlkAbout = new System.Windows.Forms.LinkLabel();
+            this.cmsSavestates = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsmiRenameSavestate = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiDeleteSavestate = new System.Windows.Forms.ToolStripMenuItem();
             this.grbSetup.SuspendLayout();
             this.grbProfiles.SuspendLayout();
             this.grbSavestates.SuspendLayout();
+            this.cmsSavestates.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblProfilesDir
@@ -220,11 +225,15 @@
             this.trvSavestates.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.trvSavestates.FullRowSelect = true;
+            this.trvSavestates.HideSelection = false;
             this.trvSavestates.Location = new System.Drawing.Point(6, 19);
             this.trvSavestates.Name = "trvSavestates";
+            this.trvSavestates.ShowLines = false;
             this.trvSavestates.ShowRootLines = false;
             this.trvSavestates.Size = new System.Drawing.Size(384, 242);
             this.trvSavestates.TabIndex = 11;
+            this.trvSavestates.MouseUp += new System.Windows.Forms.MouseEventHandler(this.trvSavestates_MouseUp);
             // 
             // hlkAbout
             // 
@@ -237,6 +246,29 @@
             this.hlkAbout.TabStop = true;
             this.hlkAbout.Text = "About";
             this.hlkAbout.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.hlkAbout_LinkClicked);
+            // 
+            // cmsSavestates
+            // 
+            this.cmsSavestates.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiRenameSavestate,
+            this.tsmiDeleteSavestate});
+            this.cmsSavestates.Name = "cmsSavestates";
+            this.cmsSavestates.Size = new System.Drawing.Size(137, 48);
+            this.cmsSavestates.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.cmsSavestates_ItemClicked);
+            // 
+            // tsmiRenameSavestate
+            // 
+            this.tsmiRenameSavestate.Name = "tsmiRenameSavestate";
+            this.tsmiRenameSavestate.ShortcutKeys = System.Windows.Forms.Keys.F2;
+            this.tsmiRenameSavestate.Size = new System.Drawing.Size(180, 22);
+            this.tsmiRenameSavestate.Text = "Rename";
+            // 
+            // tsmiDeleteSavestate
+            // 
+            this.tsmiDeleteSavestate.Name = "tsmiDeleteSavestate";
+            this.tsmiDeleteSavestate.ShortcutKeys = System.Windows.Forms.Keys.Delete;
+            this.tsmiDeleteSavestate.Size = new System.Drawing.Size(180, 22);
+            this.tsmiDeleteSavestate.Text = "Delete";
             // 
             // MainForm
             // 
@@ -255,6 +287,7 @@
             this.grbSetup.PerformLayout();
             this.grbProfiles.ResumeLayout(false);
             this.grbSavestates.ResumeLayout(false);
+            this.cmsSavestates.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -279,6 +312,9 @@
         private System.Windows.Forms.Button btnLoadSavestate;
         private System.Windows.Forms.Button btnImportSavestate;
         private System.Windows.Forms.LinkLabel hlkAbout;
+        private System.Windows.Forms.ContextMenuStrip cmsSavestates;
+        private System.Windows.Forms.ToolStripMenuItem tsmiRenameSavestate;
+        private System.Windows.Forms.ToolStripMenuItem tsmiDeleteSavestate;
     }
 }
 

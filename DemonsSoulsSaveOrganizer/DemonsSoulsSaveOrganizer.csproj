@@ -53,11 +53,11 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Profile.cs" />
-    <Compile Include="ProfileEditForm.cs">
+    <Compile Include="NameEditForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ProfileEditForm.Designer.cs">
-      <DependentUpon>ProfileEditForm.cs</DependentUpon>
+    <Compile Include="NameEditForm.Designer.cs">
+      <DependentUpon>NameEditForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -65,8 +65,8 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProfileEditForm.resx">
-      <DependentUpon>ProfileEditForm.cs</DependentUpon>
+    <EmbeddedResource Include="NameEditForm.resx">
+      <DependentUpon>NameEditForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

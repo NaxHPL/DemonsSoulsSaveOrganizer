@@ -14,21 +14,7 @@ namespace DemonsSoulsSaveOrganizer {
 
         public MainForm() {
             InitializeComponent();
-
-            if (Directory.Exists(settings.ProfilesDirectory)) {
-                SetProfilesDirectory(settings.ProfilesDirectory);
-            }
-            else {
-                SetProfilesDirectory(string.Empty, true);
-            }
-
-            if (Directory.Exists(settings.SavefileDirectory)) {
-                SetSavefileDirectory(settings.SavefileDirectory);
-            }
-            else {
-                SetSavefileDirectory(string.Empty, true);
-            }
-
+            InitializeDirectories();
             RefreshProfilesList();
         }
 
@@ -60,9 +46,9 @@ namespace DemonsSoulsSaveOrganizer {
                 return;
             }
 
-            using (ProfileEditForm profileEditForm = new ProfileEditForm("New Profile", string.Empty)) {
-                if (profileEditForm.ShowDialog() == DialogResult.OK) {
-                    CreateProfile(profileEditForm.ProfileName);
+            using (NameEditForm nameEditForm = new NameEditForm("New Profile", "Profile Name:", string.Empty)) {
+                if (nameEditForm.ShowDialog() == DialogResult.OK) {
+                    CreateProfile(nameEditForm.ProfileName);
                 }
             }
         }
@@ -109,7 +95,39 @@ namespace DemonsSoulsSaveOrganizer {
             LoadSavestate((Savestate)trvSavestates.SelectedNode.Tag);
         }
 
+        private void cmsSavestates_ItemClicked(object sender, ToolStripItemClickedEventArgs e) {
+            if (e.ClickedItem == tsmiRenameSavestate) {
+                RenameSavestate((Savestate)trvSavestates.SelectedNode.Tag);
+            }
+        }
+
+        private void trvSavestates_MouseUp(object sender, MouseEventArgs e) {
+            if (e.Button == MouseButtons.Right) {
+                trvSavestates.SelectedNode = trvSavestates.GetNodeAt(e.X, e.Y);
+
+                if (trvSavestates.SelectedNode != null) {
+                    cmsSavestates.Show(trvSavestates, e.Location);
+                }
+            }
+        }
+
         #endregion
+
+        private void InitializeDirectories() {
+            if (Directory.Exists(settings.ProfilesDirectory)) {
+                SetProfilesDirectory(settings.ProfilesDirectory);
+            }
+            else {
+                SetProfilesDirectory(string.Empty, true);
+            }
+
+            if (Directory.Exists(settings.SavefileDirectory)) {
+                SetSavefileDirectory(settings.SavefileDirectory);
+            }
+            else {
+                SetSavefileDirectory(string.Empty, true);
+            }
+        }
 
         private string PromptForDirectory() {
             using (FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog()) {
@@ -196,9 +214,9 @@ namespace DemonsSoulsSaveOrganizer {
         }
 
         private void EditProfile(Profile profileToEdit) {
-            using (ProfileEditForm profileEditForm = new ProfileEditForm($"Edit {profileToEdit.DisplayName}", profileToEdit.DisplayName)) {
-                if (profileEditForm.ShowDialog() == DialogResult.OK) {
-                    profileToEdit.ChangeName(profileEditForm.ProfileName);
+            using (NameEditForm nameEditForm = new NameEditForm($"Edit {profileToEdit.DisplayName}", "Profile Name:", profileToEdit.DisplayName)) {
+                if (nameEditForm.ShowDialog() == DialogResult.OK) {
+                    profileToEdit.ChangeName(nameEditForm.ProfileName);
                 }
             }
         }
@@ -303,6 +321,10 @@ namespace DemonsSoulsSaveOrganizer {
             catch (Exception e) {
                 MessageBox.Show($"An error occured while loading the savestate:\n\n{e.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void RenameSavestate(Savestate savestate) {
+            
         }
     }
 }
