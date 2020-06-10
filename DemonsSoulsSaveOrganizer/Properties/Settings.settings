@@ -14,5 +14,8 @@
     <Setting Name="TwitterLink" Type="System.String" Scope="Application">
       <Value Profile="(Default)">https://twitter.com/NaxHPL</Value>
     </Setting>
+    <Setting Name="HelpLink" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">https://github.com/NaxHPL/DemonsSoulsSaveOrganizer#getting-started</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

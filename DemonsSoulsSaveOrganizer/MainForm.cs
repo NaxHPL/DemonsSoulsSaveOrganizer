@@ -2,6 +2,8 @@
 using System.Windows.Forms;
 using System.IO;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Diagnostics;
 
 namespace DemonsSoulsSaveOrganizer {
 
@@ -38,12 +40,6 @@ namespace DemonsSoulsSaveOrganizer {
             }
         }
 
-        private void hlkAbout_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) {
-            using (AboutForm aboutForm = new AboutForm()) {
-                aboutForm.ShowDialog();
-            }
-        }
-
         private void btnAddProfile_Click(object sender, EventArgs e) {
             if (string.IsNullOrWhiteSpace(settings.ProfilesDirectory)) {
                 DialogResult result = MessageBox.Show("Please setup your profile directory before creating profiles.", "Setup Required", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
@@ -77,6 +73,16 @@ namespace DemonsSoulsSaveOrganizer {
 
                 if (result == DialogResult.OK) {
                     btnBrowseSavefileDir.PerformClick();
+                }
+
+                return;
+            }
+
+            if (lstProfiles.Items.Count == 0) {
+                DialogResult result = MessageBox.Show("Please create a profile before importing savestates.", "Profile Required", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+
+                if (result == DialogResult.OK) {
+                    btnAddProfile.PerformClick();
                 }
 
                 return;
@@ -160,11 +166,38 @@ namespace DemonsSoulsSaveOrganizer {
         }
 
         private void MainForm_KeyDown(object sender, KeyEventArgs e) {
+            if (e.KeyCode == Keys.F1) {
+                Process.Start(settings.HelpLink);
+            }
+
             if (trvSavestates.Focused) {
                 HandleSavestateKeyShortcuts(e.KeyCode);
             }
             else if (lstProfiles.Focused) {
                 HandleProfileKeyShortcuts(e.KeyCode);
+            }
+        }
+
+        private void picGear_MouseEnter(object sender, EventArgs e) {
+            picGear.BackColor = Color.LightBlue;
+        }
+
+        private void picGear_MouseLeave(object sender, EventArgs e) {
+            picGear.BackColor = Color.Transparent;
+        }
+
+        private void picGear_MouseUp(object sender, MouseEventArgs e) {
+            cmsSettings.Show(picGear, e.Location);
+        }
+
+        private void cmsSettings_ItemClicked(object sender, ToolStripItemClickedEventArgs e) {
+            if (e.ClickedItem == tsmiAbout) {
+                using (AboutForm aboutForm = new AboutForm()) {
+                    aboutForm.ShowDialog();
+                }
+            }
+            else if (e.ClickedItem == tsmiHelp) {
+                Process.Start(settings.HelpLink);
             }
         }
 
