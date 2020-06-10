@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.IO;
-using System.Diagnostics;
 using System.Collections.Generic;
 
 namespace DemonsSoulsSaveOrganizer {
 
     public partial class MainForm : Form {
 
-        private readonly Properties.Settings settings = Properties.Settings.Default;
+        private static readonly Properties.Settings settings = Properties.Settings.Default;
 
         private Profile currentlySelectedProfile;
 
@@ -58,7 +57,7 @@ namespace DemonsSoulsSaveOrganizer {
 
             using (NameEditForm nameEditForm = new NameEditForm("New Profile", "Profile Name:", string.Empty)) {
                 if (nameEditForm.ShowDialog() == DialogResult.OK) {
-                    CreateProfile(nameEditForm.InputtedName);
+                    CreateProfile(nameEditForm.Input);
                 }
             }
         }
@@ -120,7 +119,7 @@ namespace DemonsSoulsSaveOrganizer {
 
         private void csmProfiles_ItemClicked(object sender, ToolStripItemClickedEventArgs e) {
             if (e.ClickedItem == tsmiRenameProfile) {
-                EditProfile(currentlySelectedProfile);
+                RenameProfile(currentlySelectedProfile);
             }
             else if (e.ClickedItem == tsmiDeleteProfile) {
                 cmsProfiles.Close();
@@ -255,14 +254,20 @@ namespace DemonsSoulsSaveOrganizer {
                 return;
             }
 
-            string fullPath = $"{settings.ProfilesDirectory}/{profileName}";
+            if (Profile.Exists(profileName)) {
+                MessageBox.Show($"A profile named \"{profileName}\" already exists!", "Profile Already Exists", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                btnAddProfile.PerformClick();
+                return;
+            }
+
+            string fullPath = Path.Combine(settings.ProfilesDirectory, profileName);
             DirectoryInfo directoryInfo;
 
             try {
                 directoryInfo = Directory.CreateDirectory(fullPath);
             }
             catch (Exception e) {
-                MessageBox.Show($"An error occured while creating the profile:\n\n{e.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"An error occured while creating the profile directory:\n\n{e.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -270,11 +275,23 @@ namespace DemonsSoulsSaveOrganizer {
             lstProfiles.SelectedIndex = index;
         }
 
-        private void EditProfile(Profile profileToEdit) {
-            using (NameEditForm nameEditForm = new NameEditForm($"Edit {profileToEdit.DisplayName}", "Profile Name:", profileToEdit.DisplayName)) {
+        private void RenameProfile(Profile profile) {
+            using (NameEditForm nameEditForm = new NameEditForm($"Edit {profile.DisplayName}", "Profile Name:", profile.DisplayName)) {
                 if (nameEditForm.ShowDialog() == DialogResult.OK) {
-                    profileToEdit.ChangeName(nameEditForm.InputtedName);
-                    lstProfiles.Items[lstProfiles.SelectedIndex] = currentlySelectedProfile;
+                    if (profile.DisplayName.Equals(nameEditForm.Input)) {
+                        return;
+                    }
+
+                    if (Profile.Exists(nameEditForm.Input) && !profile.DisplayName.Equals(nameEditForm.Input, StringComparison.OrdinalIgnoreCase)) {
+                        MessageBox.Show($"A profile named \"{nameEditForm.Input}\" already exists!", "Profile Already Exists", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        RenameProfile(currentlySelectedProfile);
+                        return;
+                    }
+
+                    profile.ChangeName(nameEditForm.Input);
+                    RefreshProfilesList();
+
+                    lstProfiles.SelectedIndex = lstProfiles.Items.IndexOf(profile);
                 }
             }
         }
@@ -392,9 +409,22 @@ namespace DemonsSoulsSaveOrganizer {
         private void RenameSavestate(Savestate savestate) {
             using (NameEditForm nameEditForm = new NameEditForm($"Edit {savestate.DisplayName}", "Savestate Name:", savestate.DisplayName)) {
                 if (nameEditForm.ShowDialog() == DialogResult.OK) {
-                    savestate.ChangeName(nameEditForm.InputtedName);
-                    trvSavestates.SelectedNode.Text = nameEditForm.InputtedName;
+                    if (savestate.DisplayName.Equals(nameEditForm.Input)) {
+                        return;
+                    }
+
+                    if (Savestate.ExistsInProfile(nameEditForm.Input, currentlySelectedProfile) && !savestate.DisplayName.Equals(nameEditForm.Input, StringComparison.OrdinalIgnoreCase)) {
+                        MessageBox.Show($"A savestate named \"{nameEditForm.Input}\" already exists!", "Savestate Already Exists", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        RenameSavestate(savestate);
+                        return;
+                    }
+
+                    savestate.ChangeName(nameEditForm.Input);
+                    trvSavestates.SelectedNode.Text = nameEditForm.Input;
+
+                    TreeNode nodeToSelect = trvSavestates.SelectedNode;
                     trvSavestates.Sort();
+                    trvSavestates.SelectedNode = nodeToSelect;
                 }
             }
         }
@@ -418,7 +448,7 @@ namespace DemonsSoulsSaveOrganizer {
 
         private void HandleProfileKeyShortcuts(Keys key) {
             if (key == Keys.F2 && lstProfiles.SelectedIndex >= 0) {
-                EditProfile(currentlySelectedProfile);
+                RenameProfile(currentlySelectedProfile);
             }
             else if (key == Keys.Delete && lstProfiles.SelectedIndex >= 0) {
                 DeleteProfile(currentlySelectedProfile);

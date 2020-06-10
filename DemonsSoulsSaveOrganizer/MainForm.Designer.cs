@@ -67,13 +67,13 @@
             this.txtProfilesDir.Location = new System.Drawing.Point(9, 32);
             this.txtProfilesDir.Name = "txtProfilesDir";
             this.txtProfilesDir.ReadOnly = true;
-            this.txtProfilesDir.Size = new System.Drawing.Size(443, 20);
+            this.txtProfilesDir.Size = new System.Drawing.Size(426, 20);
             this.txtProfilesDir.TabIndex = 1;
             // 
             // btnBrowseProfilesDir
             // 
             this.btnBrowseProfilesDir.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnBrowseProfilesDir.Location = new System.Drawing.Point(458, 30);
+            this.btnBrowseProfilesDir.Location = new System.Drawing.Point(441, 30);
             this.btnBrowseProfilesDir.Name = "btnBrowseProfilesDir";
             this.btnBrowseProfilesDir.Size = new System.Drawing.Size(75, 23);
             this.btnBrowseProfilesDir.TabIndex = 2;
@@ -84,7 +84,7 @@
             // btnBrowseSavefileDir
             // 
             this.btnBrowseSavefileDir.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnBrowseSavefileDir.Location = new System.Drawing.Point(458, 69);
+            this.btnBrowseSavefileDir.Location = new System.Drawing.Point(441, 69);
             this.btnBrowseSavefileDir.Name = "btnBrowseSavefileDir";
             this.btnBrowseSavefileDir.Size = new System.Drawing.Size(75, 23);
             this.btnBrowseSavefileDir.TabIndex = 4;
@@ -98,7 +98,7 @@
             this.txtSavefileDir.Location = new System.Drawing.Point(9, 71);
             this.txtSavefileDir.Name = "txtSavefileDir";
             this.txtSavefileDir.ReadOnly = true;
-            this.txtSavefileDir.Size = new System.Drawing.Size(443, 20);
+            this.txtSavefileDir.Size = new System.Drawing.Size(426, 20);
             this.txtSavefileDir.TabIndex = 3;
             // 
             // lblSavefileDir
@@ -122,7 +122,7 @@
             this.grbSetup.Controls.Add(this.lblSavefileDir);
             this.grbSetup.Location = new System.Drawing.Point(12, 12);
             this.grbSetup.Name = "grbSetup";
-            this.grbSetup.Size = new System.Drawing.Size(539, 100);
+            this.grbSetup.Size = new System.Drawing.Size(522, 100);
             this.grbSetup.TabIndex = 0;
             this.grbSetup.TabStop = false;
             this.grbSetup.Text = "Setup";
@@ -135,7 +135,7 @@
             this.grbProfiles.Controls.Add(this.btnAddProfile);
             this.grbProfiles.Location = new System.Drawing.Point(12, 118);
             this.grbProfiles.Name = "grbProfiles";
-            this.grbProfiles.Size = new System.Drawing.Size(160, 296);
+            this.grbProfiles.Size = new System.Drawing.Size(160, 264);
             this.grbProfiles.TabIndex = 5;
             this.grbProfiles.TabStop = false;
             this.grbProfiles.Text = "Profiles";
@@ -149,7 +149,8 @@
             this.lstProfiles.IntegralHeight = false;
             this.lstProfiles.Location = new System.Drawing.Point(6, 48);
             this.lstProfiles.Name = "lstProfiles";
-            this.lstProfiles.Size = new System.Drawing.Size(148, 242);
+            this.lstProfiles.Size = new System.Drawing.Size(148, 210);
+            this.lstProfiles.Sorted = true;
             this.lstProfiles.TabIndex = 7;
             this.lstProfiles.SelectedIndexChanged += new System.EventHandler(this.lstProfiles_SelectedIndexChanged);
             this.lstProfiles.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lstProfiles_MouseUp);
@@ -176,7 +177,7 @@
             this.grbSavestates.Controls.Add(this.trvSavestates);
             this.grbSavestates.Location = new System.Drawing.Point(178, 118);
             this.grbSavestates.Name = "grbSavestates";
-            this.grbSavestates.Size = new System.Drawing.Size(373, 296);
+            this.grbSavestates.Size = new System.Drawing.Size(356, 264);
             this.grbSavestates.TabIndex = 8;
             this.grbSavestates.TabStop = false;
             this.grbSavestates.Text = "Savestates";
@@ -212,7 +213,7 @@
             this.trvSavestates.Name = "trvSavestates";
             this.trvSavestates.ShowLines = false;
             this.trvSavestates.ShowRootLines = false;
-            this.trvSavestates.Size = new System.Drawing.Size(361, 242);
+            this.trvSavestates.Size = new System.Drawing.Size(344, 210);
             this.trvSavestates.TabIndex = 11;
             this.trvSavestates.MouseUp += new System.Windows.Forms.MouseEventHandler(this.trvSavestates_MouseUp);
             // 
@@ -220,7 +221,7 @@
             // 
             this.hlkAbout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.hlkAbout.AutoSize = true;
-            this.hlkAbout.Location = new System.Drawing.Point(516, 417);
+            this.hlkAbout.Location = new System.Drawing.Point(499, 385);
             this.hlkAbout.Name = "hlkAbout";
             this.hlkAbout.Size = new System.Drawing.Size(35, 13);
             this.hlkAbout.TabIndex = 12;
@@ -257,34 +258,34 @@
             this.tsmiRenameProfile,
             this.tsmiDeleteProfile});
             this.cmsProfiles.Name = "cmsSavestates";
-            this.cmsProfiles.Size = new System.Drawing.Size(181, 70);
+            this.cmsProfiles.Size = new System.Drawing.Size(137, 48);
             this.cmsProfiles.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.csmProfiles_ItemClicked);
             // 
             // tsmiRenameProfile
             // 
             this.tsmiRenameProfile.Name = "tsmiRenameProfile";
             this.tsmiRenameProfile.ShortcutKeys = System.Windows.Forms.Keys.F2;
-            this.tsmiRenameProfile.Size = new System.Drawing.Size(180, 22);
+            this.tsmiRenameProfile.Size = new System.Drawing.Size(136, 22);
             this.tsmiRenameProfile.Text = "Rename";
             // 
             // tsmiDeleteProfile
             // 
             this.tsmiDeleteProfile.Name = "tsmiDeleteProfile";
             this.tsmiDeleteProfile.ShortcutKeys = System.Windows.Forms.Keys.Delete;
-            this.tsmiDeleteProfile.Size = new System.Drawing.Size(180, 22);
+            this.tsmiDeleteProfile.Size = new System.Drawing.Size(136, 22);
             this.tsmiDeleteProfile.Text = "Delete";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(563, 439);
+            this.ClientSize = new System.Drawing.Size(546, 407);
             this.Controls.Add(this.hlkAbout);
             this.Controls.Add(this.grbSavestates);
             this.Controls.Add(this.grbProfiles);
             this.Controls.Add(this.grbSetup);
             this.KeyPreview = true;
-            this.MinimumSize = new System.Drawing.Size(536, 287);
+            this.MinimumSize = new System.Drawing.Size(489, 254);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Demon\'s Souls Save Organizer";
