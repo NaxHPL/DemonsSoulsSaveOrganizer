@@ -55,6 +55,7 @@
             this.picGear = new System.Windows.Forms.PictureBox();
             this.lblStatus = new System.Windows.Forms.Label();
             this.timStatus = new System.Windows.Forms.Timer(this.components);
+            this.tsbEditSavestate = new System.Windows.Forms.ToolStripButton();
             this.grbSetup.SuspendLayout();
             this.grbProfiles.SuspendLayout();
             this.tsProfiles.SuspendLayout();
@@ -192,6 +193,7 @@
             // 
             // tsbEditProfile
             // 
+            this.tsbEditProfile.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.tsbEditProfile.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.tsbEditProfile.Image = global::DemonsSoulsSaveOrganizer.Properties.Resources.pencil;
             this.tsbEditProfile.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -234,7 +236,8 @@
             this.tsSavestate.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.tsSavestate.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbImportSavestate,
-            this.tsbLoadSavestate});
+            this.tsbLoadSavestate,
+            this.tsbEditSavestate});
             this.tsSavestate.Location = new System.Drawing.Point(3, 16);
             this.tsSavestate.Name = "tsSavestate";
             this.tsSavestate.Size = new System.Drawing.Size(340, 25);
@@ -364,6 +367,7 @@
             // 
             // lblStatus
             // 
+            this.lblStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblStatus.AutoSize = true;
             this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStatus.Location = new System.Drawing.Point(12, 368);
@@ -375,6 +379,17 @@
             // timStatus
             // 
             this.timStatus.Tick += new System.EventHandler(this.timStatus_Tick);
+            // 
+            // tsbEditSavestate
+            // 
+            this.tsbEditSavestate.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsbEditSavestate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbEditSavestate.Image = global::DemonsSoulsSaveOrganizer.Properties.Resources.pencil;
+            this.tsbEditSavestate.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbEditSavestate.Name = "tsbEditSavestate";
+            this.tsbEditSavestate.Size = new System.Drawing.Size(23, 22);
+            this.tsbEditSavestate.Text = "Edit Savestate";
+            this.tsbEditSavestate.Click += new System.EventHandler(this.tsbEditSavestate_Click);
             // 
             // MainForm
             // 
@@ -442,6 +457,7 @@
         private System.Windows.Forms.ToolStripButton tsbLoadSavestate;
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.Timer timStatus;
+        private System.Windows.Forms.ToolStripButton tsbEditSavestate;
     }
 }
 

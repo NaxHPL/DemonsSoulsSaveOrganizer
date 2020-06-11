@@ -226,6 +226,10 @@ namespace DemonsSoulsSaveOrganizer {
             timStatus.Stop();
         }
 
+        private void tsbEditSavestate_Click(object sender, EventArgs e) {
+            RenameSavestate((Savestate)trvSavestates.SelectedNode.Tag);
+        }
+
         #endregion
 
         private void InitializeDirectories() {
