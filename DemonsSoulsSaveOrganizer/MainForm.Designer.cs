@@ -24,6 +24,7 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.lblProfilesDir = new System.Windows.Forms.Label();
             this.txtProfilesDir = new System.Windows.Forms.TextBox();
             this.btnBrowseProfilesDir = new System.Windows.Forms.Button();
@@ -35,8 +36,6 @@
             this.lstProfiles = new System.Windows.Forms.ListBox();
             this.btnAddProfile = new System.Windows.Forms.Button();
             this.grbSavestates = new System.Windows.Forms.GroupBox();
-            this.btnLoadSavestate = new System.Windows.Forms.Button();
-            this.btnImportSavestate = new System.Windows.Forms.Button();
             this.trvSavestates = new System.Windows.Forms.TreeView();
             this.cmsSavestates = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmiRenameSavestate = new System.Windows.Forms.ToolStripMenuItem();
@@ -44,17 +43,19 @@
             this.cmsProfiles = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmiRenameProfile = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDeleteProfile = new System.Windows.Forms.ToolStripMenuItem();
-            this.picGear = new System.Windows.Forms.PictureBox();
             this.cmsSettings = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmiAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiHelp = new System.Windows.Forms.ToolStripMenuItem();
+            this.picGear = new System.Windows.Forms.PictureBox();
+            this.btnLoadSavestate = new System.Windows.Forms.Button();
+            this.btnImportSavestate = new System.Windows.Forms.Button();
             this.grbSetup.SuspendLayout();
             this.grbProfiles.SuspendLayout();
             this.grbSavestates.SuspendLayout();
             this.cmsSavestates.SuspendLayout();
             this.cmsProfiles.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picGear)).BeginInit();
             this.cmsSettings.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picGear)).BeginInit();
             this.SuspendLayout();
             // 
             // lblProfilesDir
@@ -73,13 +74,13 @@
             this.txtProfilesDir.Location = new System.Drawing.Point(9, 75);
             this.txtProfilesDir.Name = "txtProfilesDir";
             this.txtProfilesDir.ReadOnly = true;
-            this.txtProfilesDir.Size = new System.Drawing.Size(400, 20);
+            this.txtProfilesDir.Size = new System.Drawing.Size(416, 20);
             this.txtProfilesDir.TabIndex = 1;
             // 
             // btnBrowseProfilesDir
             // 
             this.btnBrowseProfilesDir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBrowseProfilesDir.Location = new System.Drawing.Point(415, 73);
+            this.btnBrowseProfilesDir.Location = new System.Drawing.Point(431, 73);
             this.btnBrowseProfilesDir.Name = "btnBrowseProfilesDir";
             this.btnBrowseProfilesDir.Size = new System.Drawing.Size(75, 23);
             this.btnBrowseProfilesDir.TabIndex = 2;
@@ -90,7 +91,7 @@
             // btnBrowseSavefileDir
             // 
             this.btnBrowseSavefileDir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBrowseSavefileDir.Location = new System.Drawing.Point(415, 30);
+            this.btnBrowseSavefileDir.Location = new System.Drawing.Point(431, 30);
             this.btnBrowseSavefileDir.Name = "btnBrowseSavefileDir";
             this.btnBrowseSavefileDir.Size = new System.Drawing.Size(75, 23);
             this.btnBrowseSavefileDir.TabIndex = 4;
@@ -105,7 +106,7 @@
             this.txtSavefileDir.Location = new System.Drawing.Point(9, 32);
             this.txtSavefileDir.Name = "txtSavefileDir";
             this.txtSavefileDir.ReadOnly = true;
-            this.txtSavefileDir.Size = new System.Drawing.Size(400, 20);
+            this.txtSavefileDir.Size = new System.Drawing.Size(416, 20);
             this.txtSavefileDir.TabIndex = 3;
             // 
             // lblSavefileDir
@@ -129,7 +130,7 @@
             this.grbSetup.Controls.Add(this.lblSavefileDir);
             this.grbSetup.Location = new System.Drawing.Point(12, 12);
             this.grbSetup.Name = "grbSetup";
-            this.grbSetup.Size = new System.Drawing.Size(496, 103);
+            this.grbSetup.Size = new System.Drawing.Size(512, 103);
             this.grbSetup.TabIndex = 0;
             this.grbSetup.TabStop = false;
             this.grbSetup.Text = "Setup";
@@ -142,7 +143,7 @@
             this.grbProfiles.Controls.Add(this.btnAddProfile);
             this.grbProfiles.Location = new System.Drawing.Point(12, 121);
             this.grbProfiles.Name = "grbProfiles";
-            this.grbProfiles.Size = new System.Drawing.Size(160, 247);
+            this.grbProfiles.Size = new System.Drawing.Size(160, 242);
             this.grbProfiles.TabIndex = 5;
             this.grbProfiles.TabStop = false;
             this.grbProfiles.Text = "Profiles";
@@ -154,9 +155,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lstProfiles.FormattingEnabled = true;
             this.lstProfiles.IntegralHeight = false;
-            this.lstProfiles.Location = new System.Drawing.Point(6, 48);
+            this.lstProfiles.Location = new System.Drawing.Point(6, 51);
             this.lstProfiles.Name = "lstProfiles";
-            this.lstProfiles.Size = new System.Drawing.Size(148, 193);
+            this.lstProfiles.Size = new System.Drawing.Size(148, 185);
             this.lstProfiles.Sorted = true;
             this.lstProfiles.TabIndex = 7;
             this.lstProfiles.SelectedIndexChanged += new System.EventHandler(this.lstProfiles_SelectedIndexChanged);
@@ -168,7 +169,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAddProfile.Location = new System.Drawing.Point(6, 19);
             this.btnAddProfile.Name = "btnAddProfile";
-            this.btnAddProfile.Size = new System.Drawing.Size(148, 23);
+            this.btnAddProfile.Size = new System.Drawing.Size(148, 26);
             this.btnAddProfile.TabIndex = 6;
             this.btnAddProfile.Text = "New Profile";
             this.btnAddProfile.UseVisualStyleBackColor = true;
@@ -184,30 +185,10 @@
             this.grbSavestates.Controls.Add(this.trvSavestates);
             this.grbSavestates.Location = new System.Drawing.Point(178, 121);
             this.grbSavestates.Name = "grbSavestates";
-            this.grbSavestates.Size = new System.Drawing.Size(330, 247);
+            this.grbSavestates.Size = new System.Drawing.Size(346, 242);
             this.grbSavestates.TabIndex = 8;
             this.grbSavestates.TabStop = false;
             this.grbSavestates.Text = "Savestates";
-            // 
-            // btnLoadSavestate
-            // 
-            this.btnLoadSavestate.Location = new System.Drawing.Point(145, 19);
-            this.btnLoadSavestate.Name = "btnLoadSavestate";
-            this.btnLoadSavestate.Size = new System.Drawing.Size(133, 23);
-            this.btnLoadSavestate.TabIndex = 10;
-            this.btnLoadSavestate.Text = "Load Savestate";
-            this.btnLoadSavestate.UseVisualStyleBackColor = true;
-            this.btnLoadSavestate.Click += new System.EventHandler(this.btnLoadSavestate_Click);
-            // 
-            // btnImportSavestate
-            // 
-            this.btnImportSavestate.Location = new System.Drawing.Point(6, 19);
-            this.btnImportSavestate.Name = "btnImportSavestate";
-            this.btnImportSavestate.Size = new System.Drawing.Size(133, 23);
-            this.btnImportSavestate.TabIndex = 9;
-            this.btnImportSavestate.Text = "Import Savestate";
-            this.btnImportSavestate.UseVisualStyleBackColor = true;
-            this.btnImportSavestate.Click += new System.EventHandler(this.btnImportSavestate_Click);
             // 
             // trvSavestates
             // 
@@ -216,11 +197,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.trvSavestates.FullRowSelect = true;
             this.trvSavestates.HideSelection = false;
-            this.trvSavestates.Location = new System.Drawing.Point(6, 48);
+            this.trvSavestates.Location = new System.Drawing.Point(6, 51);
             this.trvSavestates.Name = "trvSavestates";
             this.trvSavestates.ShowLines = false;
             this.trvSavestates.ShowRootLines = false;
-            this.trvSavestates.Size = new System.Drawing.Size(318, 193);
+            this.trvSavestates.Size = new System.Drawing.Size(334, 185);
             this.trvSavestates.TabIndex = 11;
             this.trvSavestates.MouseUp += new System.Windows.Forms.MouseEventHandler(this.trvSavestates_MouseUp);
             // 
@@ -270,20 +251,6 @@
             this.tsmiDeleteProfile.Size = new System.Drawing.Size(136, 22);
             this.tsmiDeleteProfile.Text = "Delete";
             // 
-            // picGear
-            // 
-            this.picGear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.picGear.Image = global::DemonsSoulsSaveOrganizer.Properties.Resources.gear;
-            this.picGear.Location = new System.Drawing.Point(488, 370);
-            this.picGear.Name = "picGear";
-            this.picGear.Size = new System.Drawing.Size(28, 28);
-            this.picGear.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picGear.TabIndex = 9;
-            this.picGear.TabStop = false;
-            this.picGear.MouseEnter += new System.EventHandler(this.picGear_MouseEnter);
-            this.picGear.MouseLeave += new System.EventHandler(this.picGear_MouseLeave);
-            this.picGear.MouseUp += new System.Windows.Forms.MouseEventHandler(this.picGear_MouseUp);
-            // 
             // cmsSettings
             // 
             this.cmsSettings.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -296,27 +263,68 @@
             // tsmiAbout
             // 
             this.tsmiAbout.Name = "tsmiAbout";
-            this.tsmiAbout.Size = new System.Drawing.Size(180, 22);
+            this.tsmiAbout.Size = new System.Drawing.Size(118, 22);
             this.tsmiAbout.Text = "About";
             // 
             // tsmiHelp
             // 
             this.tsmiHelp.Name = "tsmiHelp";
             this.tsmiHelp.ShortcutKeys = System.Windows.Forms.Keys.F1;
-            this.tsmiHelp.Size = new System.Drawing.Size(180, 22);
+            this.tsmiHelp.Size = new System.Drawing.Size(118, 22);
             this.tsmiHelp.Text = "Help";
+            // 
+            // picGear
+            // 
+            this.picGear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.picGear.Image = ((System.Drawing.Image)(resources.GetObject("picGear.Image")));
+            this.picGear.Location = new System.Drawing.Point(503, 364);
+            this.picGear.Name = "picGear";
+            this.picGear.Size = new System.Drawing.Size(28, 28);
+            this.picGear.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picGear.TabIndex = 9;
+            this.picGear.TabStop = false;
+            this.picGear.MouseEnter += new System.EventHandler(this.picGear_MouseEnter);
+            this.picGear.MouseLeave += new System.EventHandler(this.picGear_MouseLeave);
+            this.picGear.MouseUp += new System.Windows.Forms.MouseEventHandler(this.picGear_MouseUp);
+            // 
+            // btnLoadSavestate
+            // 
+            this.btnLoadSavestate.Image = ((System.Drawing.Image)(resources.GetObject("btnLoadSavestate.Image")));
+            this.btnLoadSavestate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLoadSavestate.Location = new System.Drawing.Point(152, 19);
+            this.btnLoadSavestate.Name = "btnLoadSavestate";
+            this.btnLoadSavestate.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnLoadSavestate.Size = new System.Drawing.Size(140, 26);
+            this.btnLoadSavestate.TabIndex = 10;
+            this.btnLoadSavestate.Text = "Load Savestate";
+            this.btnLoadSavestate.UseVisualStyleBackColor = true;
+            this.btnLoadSavestate.Click += new System.EventHandler(this.btnLoadSavestate_Click);
+            // 
+            // btnImportSavestate
+            // 
+            this.btnImportSavestate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnImportSavestate.Image = global::DemonsSoulsSaveOrganizer.Properties.Resources.import;
+            this.btnImportSavestate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnImportSavestate.Location = new System.Drawing.Point(6, 19);
+            this.btnImportSavestate.Name = "btnImportSavestate";
+            this.btnImportSavestate.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnImportSavestate.Size = new System.Drawing.Size(140, 26);
+            this.btnImportSavestate.TabIndex = 9;
+            this.btnImportSavestate.Text = "Import Savestate";
+            this.btnImportSavestate.UseVisualStyleBackColor = true;
+            this.btnImportSavestate.Click += new System.EventHandler(this.btnImportSavestate_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(520, 402);
+            this.ClientSize = new System.Drawing.Size(536, 397);
             this.Controls.Add(this.picGear);
             this.Controls.Add(this.grbSavestates);
             this.Controls.Add(this.grbProfiles);
             this.Controls.Add(this.grbSetup);
             this.KeyPreview = true;
-            this.MinimumSize = new System.Drawing.Size(489, 267);
+            this.MinimumSize = new System.Drawing.Size(503, 300);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Demon\'s Souls Save Organizer";
@@ -327,8 +335,8 @@
             this.grbSavestates.ResumeLayout(false);
             this.cmsSavestates.ResumeLayout(false);
             this.cmsProfiles.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.picGear)).EndInit();
             this.cmsSettings.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picGear)).EndInit();
             this.ResumeLayout(false);
 
         }
