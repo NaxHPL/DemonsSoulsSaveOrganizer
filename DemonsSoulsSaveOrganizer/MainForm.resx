@@ -117,6 +117,21 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="tsProfiles.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>402, 17</value>
+  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="tsbAddProfile.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEGSURBVDhPlZMxDoJAEEW/NnoDLa2MHsH72JhYeAEiV/AC
+        sDbaGQu8kYm9Eluc77Cgzgo6yWPJ7p+f2WGAiRQjbBHJepT1LFyETIiFcakKRIEOHBaSeBNhESTBXdaV
+        vHXKrDK4scXhTewTEuRm3+EkzxcTh6URKTNh+rHnWWky76WlWVGKodAPnmmO9ESbYwWkyUCJacAOhw5/
+        MchowM/EknIRT7BBr8IHTTzsSd3YCw34rf2dZthhULFGtzRgJQo1dc/OPOTAvJZV03YF5spLZA487T2I
+        /OhePw6UJgNOLHOf4TAPipoGiWP/Fg57I/o2yhx78z8wtJLwdQgNOfbBZB9//c7AA8XTLQNOCd8cAAAA
+        AElFTkSuQmCC
+</value>
+  </data>
   <metadata name="cmsSavestates.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
@@ -126,7 +141,6 @@
   <metadata name="cmsSettings.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>285, 17</value>
   </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="picGear.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAABRJJREFUaEPt

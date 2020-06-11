@@ -34,7 +34,6 @@
             this.grbSetup = new System.Windows.Forms.GroupBox();
             this.grbProfiles = new System.Windows.Forms.GroupBox();
             this.lstProfiles = new System.Windows.Forms.ListBox();
-            this.btnAddProfile = new System.Windows.Forms.Button();
             this.grbSavestates = new System.Windows.Forms.GroupBox();
             this.trvSavestates = new System.Windows.Forms.TreeView();
             this.cmsSavestates = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -46,15 +45,20 @@
             this.cmsSettings = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmiAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiHelp = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsProfiles = new System.Windows.Forms.ToolStrip();
             this.picGear = new System.Windows.Forms.PictureBox();
             this.btnLoadSavestate = new System.Windows.Forms.Button();
             this.btnImportSavestate = new System.Windows.Forms.Button();
+            this.tsbAddProfile = new System.Windows.Forms.ToolStripButton();
+            this.tsbDeleteProfile = new System.Windows.Forms.ToolStripButton();
+            this.tsbEditProfile = new System.Windows.Forms.ToolStripButton();
             this.grbSetup.SuspendLayout();
             this.grbProfiles.SuspendLayout();
             this.grbSavestates.SuspendLayout();
             this.cmsSavestates.SuspendLayout();
             this.cmsProfiles.SuspendLayout();
             this.cmsSettings.SuspendLayout();
+            this.tsProfiles.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picGear)).BeginInit();
             this.SuspendLayout();
             // 
@@ -139,8 +143,8 @@
             // 
             this.grbProfiles.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.grbProfiles.Controls.Add(this.tsProfiles);
             this.grbProfiles.Controls.Add(this.lstProfiles);
-            this.grbProfiles.Controls.Add(this.btnAddProfile);
             this.grbProfiles.Location = new System.Drawing.Point(12, 121);
             this.grbProfiles.Name = "grbProfiles";
             this.grbProfiles.Size = new System.Drawing.Size(160, 242);
@@ -162,18 +166,6 @@
             this.lstProfiles.TabIndex = 7;
             this.lstProfiles.SelectedIndexChanged += new System.EventHandler(this.lstProfiles_SelectedIndexChanged);
             this.lstProfiles.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lstProfiles_MouseUp);
-            // 
-            // btnAddProfile
-            // 
-            this.btnAddProfile.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddProfile.Location = new System.Drawing.Point(6, 19);
-            this.btnAddProfile.Name = "btnAddProfile";
-            this.btnAddProfile.Size = new System.Drawing.Size(148, 26);
-            this.btnAddProfile.TabIndex = 6;
-            this.btnAddProfile.Text = "New Profile";
-            this.btnAddProfile.UseVisualStyleBackColor = true;
-            this.btnAddProfile.Click += new System.EventHandler(this.btnAddProfile_Click);
             // 
             // grbSavestates
             // 
@@ -273,6 +265,21 @@
             this.tsmiHelp.Size = new System.Drawing.Size(118, 22);
             this.tsmiHelp.Text = "Help";
             // 
+            // tsProfiles
+            // 
+            this.tsProfiles.AutoSize = false;
+            this.tsProfiles.Dock = System.Windows.Forms.DockStyle.None;
+            this.tsProfiles.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.tsProfiles.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbAddProfile,
+            this.tsbDeleteProfile,
+            this.tsbEditProfile});
+            this.tsProfiles.Location = new System.Drawing.Point(6, 19);
+            this.tsProfiles.Name = "tsProfiles";
+            this.tsProfiles.Size = new System.Drawing.Size(148, 25);
+            this.tsProfiles.TabIndex = 8;
+            this.tsProfiles.Text = "toolStrip1";
+            // 
             // picGear
             // 
             this.picGear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -314,6 +321,36 @@
             this.btnImportSavestate.UseVisualStyleBackColor = true;
             this.btnImportSavestate.Click += new System.EventHandler(this.btnImportSavestate_Click);
             // 
+            // tsbAddProfile
+            // 
+            this.tsbAddProfile.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbAddProfile.Image = ((System.Drawing.Image)(resources.GetObject("tsbAddProfile.Image")));
+            this.tsbAddProfile.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbAddProfile.Name = "tsbAddProfile";
+            this.tsbAddProfile.Size = new System.Drawing.Size(23, 22);
+            this.tsbAddProfile.Text = "New Profile";
+            this.tsbAddProfile.Click += new System.EventHandler(this.tsbAddProfile_Click);
+            // 
+            // tsbDeleteProfile
+            // 
+            this.tsbDeleteProfile.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbDeleteProfile.Image = global::DemonsSoulsSaveOrganizer.Properties.Resources.minus_circle;
+            this.tsbDeleteProfile.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbDeleteProfile.Name = "tsbDeleteProfile";
+            this.tsbDeleteProfile.Size = new System.Drawing.Size(23, 22);
+            this.tsbDeleteProfile.Text = "Delete Profile";
+            this.tsbDeleteProfile.Click += new System.EventHandler(this.tsbDeleteProfile_Click);
+            // 
+            // tsbEditProfile
+            // 
+            this.tsbEditProfile.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbEditProfile.Image = global::DemonsSoulsSaveOrganizer.Properties.Resources.pencil;
+            this.tsbEditProfile.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbEditProfile.Name = "tsbEditProfile";
+            this.tsbEditProfile.Size = new System.Drawing.Size(23, 22);
+            this.tsbEditProfile.Text = "Edit Profile";
+            this.tsbEditProfile.Click += new System.EventHandler(this.tsbEditProfile_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -336,6 +373,8 @@
             this.cmsSavestates.ResumeLayout(false);
             this.cmsProfiles.ResumeLayout(false);
             this.cmsSettings.ResumeLayout(false);
+            this.tsProfiles.ResumeLayout(false);
+            this.tsProfiles.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picGear)).EndInit();
             this.ResumeLayout(false);
 
@@ -352,7 +391,6 @@
         private System.Windows.Forms.GroupBox grbSetup;
         private System.Windows.Forms.GroupBox grbProfiles;
         private System.Windows.Forms.GroupBox grbSavestates;
-        private System.Windows.Forms.Button btnAddProfile;
         private System.Windows.Forms.ListBox lstProfiles;
         private System.Windows.Forms.TreeView trvSavestates;
         private System.Windows.Forms.Button btnLoadSavestate;
@@ -367,6 +405,10 @@
         private System.Windows.Forms.ContextMenuStrip cmsSettings;
         private System.Windows.Forms.ToolStripMenuItem tsmiAbout;
         private System.Windows.Forms.ToolStripMenuItem tsmiHelp;
+        private System.Windows.Forms.ToolStrip tsProfiles;
+        private System.Windows.Forms.ToolStripButton tsbAddProfile;
+        private System.Windows.Forms.ToolStripButton tsbDeleteProfile;
+        private System.Windows.Forms.ToolStripButton tsbEditProfile;
     }
 }
 

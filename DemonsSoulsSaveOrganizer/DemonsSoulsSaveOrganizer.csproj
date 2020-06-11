@@ -101,9 +101,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\twitter.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\twitter_logo.png" />
   </ItemGroup>
   <ItemGroup>
@@ -113,19 +110,19 @@
     <None Include="Resources\gear.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\import1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icons8-download-16.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\import.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\load.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\plus.png" />
+    <None Include="Resources\pencil.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plus_circle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\minus_circle.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

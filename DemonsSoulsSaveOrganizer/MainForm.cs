@@ -40,7 +40,7 @@ namespace DemonsSoulsSaveOrganizer {
             }
         }
 
-        private void btnAddProfile_Click(object sender, EventArgs e) {
+        private void tsbAddProfile_Click(object sender, EventArgs e) {
             if (string.IsNullOrWhiteSpace(settings.ProfilesDirectory)) {
                 DialogResult result = MessageBox.Show("Please setup your profile directory before creating profiles.", "Setup Required", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                 
@@ -56,6 +56,22 @@ namespace DemonsSoulsSaveOrganizer {
                     CreateProfile(nameEditForm.Input);
                 }
             }
+        }
+
+        private void tsbDeleteProfile_Click(object sender, EventArgs e) {
+            if (lstProfiles.SelectedIndex == -1) {
+                return;
+            }
+
+            DeleteProfile(currentlySelectedProfile);
+        }
+
+        private void tsbEditProfile_Click(object sender, EventArgs e) {
+            if (lstProfiles.SelectedIndex == -1) {
+                return;
+            }
+
+            RenameProfile(currentlySelectedProfile);
         }
 
         private void lstProfiles_SelectedIndexChanged(object sender, EventArgs e) {
@@ -82,7 +98,7 @@ namespace DemonsSoulsSaveOrganizer {
                 DialogResult result = MessageBox.Show("Please create a profile before importing savestates.", "Profile Required", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
 
                 if (result == DialogResult.OK) {
-                    btnAddProfile.PerformClick();
+                    tsbAddProfile.PerformClick();
                 }
 
                 return;
@@ -289,7 +305,7 @@ namespace DemonsSoulsSaveOrganizer {
 
             if (Profile.Exists(profileName)) {
                 MessageBox.Show($"A profile named \"{profileName}\" already exists!", "Profile Already Exists", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                btnAddProfile.PerformClick();
+                //btnAddProfile.PerformClick();
                 return;
             }
 
