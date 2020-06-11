@@ -39,6 +39,9 @@
             this.tsbEditProfile = new System.Windows.Forms.ToolStripButton();
             this.lstProfiles = new System.Windows.Forms.ListBox();
             this.grbSavestates = new System.Windows.Forms.GroupBox();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.tsbImportSavestate = new System.Windows.Forms.ToolStripButton();
+            this.tsbLoadSavestate = new System.Windows.Forms.ToolStripButton();
             this.trvSavestates = new System.Windows.Forms.TreeView();
             this.cmsSavestates = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmiRenameSavestate = new System.Windows.Forms.ToolStripMenuItem();
@@ -50,18 +53,15 @@
             this.tsmiAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.picGear = new System.Windows.Forms.PictureBox();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.tsbImportSavestate = new System.Windows.Forms.ToolStripButton();
-            this.tsbLoadSavestate = new System.Windows.Forms.ToolStripButton();
             this.grbSetup.SuspendLayout();
             this.grbProfiles.SuspendLayout();
             this.tsProfiles.SuspendLayout();
             this.grbSavestates.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
             this.cmsSavestates.SuspendLayout();
             this.cmsProfiles.SuspendLayout();
             this.cmsSettings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picGear)).BeginInit();
-            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblProfilesDir
@@ -227,6 +227,38 @@
             this.grbSavestates.TabStop = false;
             this.grbSavestates.Text = "Savestates";
             // 
+            // toolStrip1
+            // 
+            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbImportSavestate,
+            this.tsbLoadSavestate});
+            this.toolStrip1.Location = new System.Drawing.Point(3, 16);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(340, 25);
+            this.toolStrip1.TabIndex = 12;
+            this.toolStrip1.Text = "tsSavestate";
+            // 
+            // tsbImportSavestate
+            // 
+            this.tsbImportSavestate.Image = global::DemonsSoulsSaveOrganizer.Properties.Resources.import;
+            this.tsbImportSavestate.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbImportSavestate.Margin = new System.Windows.Forms.Padding(3, 1, 3, 2);
+            this.tsbImportSavestate.Name = "tsbImportSavestate";
+            this.tsbImportSavestate.Size = new System.Drawing.Size(115, 22);
+            this.tsbImportSavestate.Text = "Import Savestate";
+            this.tsbImportSavestate.Click += new System.EventHandler(this.tsbImportSavestate_Click);
+            // 
+            // tsbLoadSavestate
+            // 
+            this.tsbLoadSavestate.Image = global::DemonsSoulsSaveOrganizer.Properties.Resources.load;
+            this.tsbLoadSavestate.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbLoadSavestate.Margin = new System.Windows.Forms.Padding(3, 1, 3, 2);
+            this.tsbLoadSavestate.Name = "tsbLoadSavestate";
+            this.tsbLoadSavestate.Size = new System.Drawing.Size(105, 22);
+            this.tsbLoadSavestate.Text = "Load Savestate";
+            this.tsbLoadSavestate.Click += new System.EventHandler(this.tsbLoadSavestate_Click);
+            // 
             // trvSavestates
             // 
             this.trvSavestates.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -253,6 +285,7 @@
             // 
             // tsmiRenameSavestate
             // 
+            this.tsmiRenameSavestate.Image = global::DemonsSoulsSaveOrganizer.Properties.Resources.pencil;
             this.tsmiRenameSavestate.Name = "tsmiRenameSavestate";
             this.tsmiRenameSavestate.ShortcutKeys = System.Windows.Forms.Keys.F2;
             this.tsmiRenameSavestate.Size = new System.Drawing.Size(136, 22);
@@ -260,6 +293,7 @@
             // 
             // tsmiDeleteSavestate
             // 
+            this.tsmiDeleteSavestate.Image = global::DemonsSoulsSaveOrganizer.Properties.Resources.minus_circle;
             this.tsmiDeleteSavestate.Name = "tsmiDeleteSavestate";
             this.tsmiDeleteSavestate.ShortcutKeys = System.Windows.Forms.Keys.Delete;
             this.tsmiDeleteSavestate.Size = new System.Drawing.Size(136, 22);
@@ -271,21 +305,23 @@
             this.tsmiRenameProfile,
             this.tsmiDeleteProfile});
             this.cmsProfiles.Name = "cmsSavestates";
-            this.cmsProfiles.Size = new System.Drawing.Size(137, 48);
+            this.cmsProfiles.Size = new System.Drawing.Size(181, 70);
             this.cmsProfiles.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.csmProfiles_ItemClicked);
             // 
             // tsmiRenameProfile
             // 
+            this.tsmiRenameProfile.Image = global::DemonsSoulsSaveOrganizer.Properties.Resources.pencil;
             this.tsmiRenameProfile.Name = "tsmiRenameProfile";
             this.tsmiRenameProfile.ShortcutKeys = System.Windows.Forms.Keys.F2;
-            this.tsmiRenameProfile.Size = new System.Drawing.Size(136, 22);
+            this.tsmiRenameProfile.Size = new System.Drawing.Size(180, 22);
             this.tsmiRenameProfile.Text = "Rename";
             // 
             // tsmiDeleteProfile
             // 
+            this.tsmiDeleteProfile.Image = global::DemonsSoulsSaveOrganizer.Properties.Resources.minus_circle;
             this.tsmiDeleteProfile.Name = "tsmiDeleteProfile";
             this.tsmiDeleteProfile.ShortcutKeys = System.Windows.Forms.Keys.Delete;
-            this.tsmiDeleteProfile.Size = new System.Drawing.Size(136, 22);
+            this.tsmiDeleteProfile.Size = new System.Drawing.Size(180, 22);
             this.tsmiDeleteProfile.Text = "Delete";
             // 
             // cmsSettings
@@ -324,38 +360,6 @@
             this.picGear.MouseLeave += new System.EventHandler(this.picGear_MouseLeave);
             this.picGear.MouseUp += new System.Windows.Forms.MouseEventHandler(this.picGear_MouseUp);
             // 
-            // toolStrip1
-            // 
-            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbImportSavestate,
-            this.tsbLoadSavestate});
-            this.toolStrip1.Location = new System.Drawing.Point(3, 16);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(340, 25);
-            this.toolStrip1.TabIndex = 12;
-            this.toolStrip1.Text = "tsSavestate";
-            // 
-            // tsbImportSavestate
-            // 
-            this.tsbImportSavestate.Image = global::DemonsSoulsSaveOrganizer.Properties.Resources.import;
-            this.tsbImportSavestate.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbImportSavestate.Margin = new System.Windows.Forms.Padding(3, 1, 3, 2);
-            this.tsbImportSavestate.Name = "tsbImportSavestate";
-            this.tsbImportSavestate.Size = new System.Drawing.Size(115, 22);
-            this.tsbImportSavestate.Text = "Import Savestate";
-            this.tsbImportSavestate.Click += new System.EventHandler(this.tsbImportSavestate_Click);
-            // 
-            // tsbLoadSavestate
-            // 
-            this.tsbLoadSavestate.Image = global::DemonsSoulsSaveOrganizer.Properties.Resources.load;
-            this.tsbLoadSavestate.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbLoadSavestate.Margin = new System.Windows.Forms.Padding(3, 1, 3, 2);
-            this.tsbLoadSavestate.Name = "tsbLoadSavestate";
-            this.tsbLoadSavestate.Size = new System.Drawing.Size(105, 22);
-            this.tsbLoadSavestate.Text = "Load Savestate";
-            this.tsbLoadSavestate.Click += new System.EventHandler(this.tsbLoadSavestate_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -378,12 +382,12 @@
             this.tsProfiles.PerformLayout();
             this.grbSavestates.ResumeLayout(false);
             this.grbSavestates.PerformLayout();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.cmsSavestates.ResumeLayout(false);
             this.cmsProfiles.ResumeLayout(false);
             this.cmsSettings.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picGear)).EndInit();
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
 
         }
