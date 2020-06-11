@@ -83,7 +83,7 @@ namespace DemonsSoulsSaveOrganizer {
             FillSavestates(currentlySelectedProfile);
         }
 
-        private void btnImportSavestate_Click(object sender, EventArgs e) {
+        private void tsbImportSavestate_Click(object sender, EventArgs e) {
             if (string.IsNullOrWhiteSpace(settings.SavefileDirectory)) {
                 DialogResult result = MessageBox.Show("Please setup your savefile directory before importing savestates.", "Setup Required", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
 
@@ -111,7 +111,7 @@ namespace DemonsSoulsSaveOrganizer {
             ImportSavestate(currentlySelectedProfile);
         }
 
-        private void btnLoadSavestate_Click(object sender, EventArgs e) {
+        private void tsbLoadSavestate_Click(object sender, EventArgs e) {
             if (string.IsNullOrWhiteSpace(settings.SavefileDirectory)) {
                 DialogResult result = MessageBox.Show("Please setup your savefile directory before loading savestates.", "Setup Required", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
 
