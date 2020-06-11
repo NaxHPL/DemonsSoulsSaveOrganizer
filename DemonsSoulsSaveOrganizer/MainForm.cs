@@ -9,14 +9,18 @@ namespace DemonsSoulsSaveOrganizer {
 
     public partial class MainForm : Form {
 
+        private const int DEFAULT_STATUS_MESSAGE_DURATION = 3000;
+
         private static readonly Properties.Settings settings = Properties.Settings.Default;
 
         private Profile currentlySelectedProfile;
 
         public MainForm() {
             InitializeComponent();
+
             InitializeDirectories();
             RefreshProfilesList();
+            lblStatus.Visible = false;
 
             trvSavestates.Select();
         }
@@ -217,6 +221,11 @@ namespace DemonsSoulsSaveOrganizer {
             }
         }
 
+        private void timStatus_Tick(object sender, EventArgs e) {
+            lblStatus.Visible = false;
+            timStatus.Stop();
+        }
+
         #endregion
 
         private void InitializeDirectories() {
@@ -399,6 +408,7 @@ namespace DemonsSoulsSaveOrganizer {
             }
             catch (Exception e) {
                 MessageBox.Show($"An error occured while importing the savestate:\n\n{e.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
             Savestate save = new Savestate(saveName, savePath);
@@ -412,6 +422,8 @@ namespace DemonsSoulsSaveOrganizer {
             trvSavestates.Nodes.Add(node);
             trvSavestates.Select();
             trvSavestates.SelectedNode = node;
+
+            SetStatusText("Import Successful!", Color.RoyalBlue);
         }
 
         private string GetNewSavestateName(string path) {
@@ -452,7 +464,10 @@ namespace DemonsSoulsSaveOrganizer {
             }
             catch (Exception e) {
                 MessageBox.Show($"An error occured while loading the savestate:\n\n{e.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
+
+            SetStatusText("Load Successful!", Color.Green);
         }
 
         private void RenameSavestate(Savestate savestate) {
@@ -492,6 +507,8 @@ namespace DemonsSoulsSaveOrganizer {
                     MessageBox.Show($"An error occured while deleting the savestate:\n\n{e.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+
+                SetStatusText("Delete Successful!", Color.Red);
             }
         }
 
@@ -511,6 +528,17 @@ namespace DemonsSoulsSaveOrganizer {
             else if (key == Keys.Delete && trvSavestates.SelectedNode != null) {
                 DeleteSavestate((Savestate)trvSavestates.SelectedNode.Tag);
             }
+        }
+
+        private void SetStatusText(string text, Color textColour, int duration = DEFAULT_STATUS_MESSAGE_DURATION) {
+            timStatus.Stop();
+            timStatus.Interval = duration;
+
+            lblStatus.Text = text;
+            lblStatus.ForeColor = textColour;
+            lblStatus.Visible = true;
+
+            timStatus.Start();
         }
     }
 }

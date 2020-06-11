@@ -124,15 +124,15 @@
   <data name="tsbAddProfile.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEGSURBVDhPlZMxDoJAEEW/NnoDLa2MHsH72JhYeAEiV7An
-        YW20MxZ4IxN7JbY432FBnRV0kseS3T8/s8MAEylG2CKS9SjrWbgImRAL41IViAIdOCwk8SbCIkiCu6wr
-        eeuUWWVwY4vDm9gnJMjNvsNJni8mDksjUmbC9GPPs9Jk3ktLs6IUQ6EfPNMc6Yk2xwpIk4ES04AdDh3+
-        YpDRgJ+JJeUinmCDXoUPmnjYk7qxFxrwW/s7zbDDoGKNbmnAShRq6p6deciBeS2rpu0KzJWXyBx42nsQ
-        +dG9fhwoTQacWOY+w2EeFDUNEsf+LRz2RvRtlDn25n9gaCXh6xAacuyDyT7++p2BB5GxLOvDd3rOAAAA
-        AElFTkSuQmCC
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEHSURBVDhPlZMxDoJAEEU/NnoDLa2MHoH72JhYcAGiV7DV
+        grXRzljojUjo1djifIYFcVfQSR5Ldv787A4DnEgwxh6xrGdZUyETLsJamJQqT+QIYLCQwrsIcy87PGWN
+        5C0oq8rgxh6nhtgWbPFw9g2u8nwzMVg6IiUUZh97lkiLeS89mitKMBIG3pzWSE+0Oa6AtBkoaxqww77k
+        LwYXGvAz5UWzEkyxQb/CBk0s7End2IwG/Nb2TiEOGFas0CsNeBKFmrpnKZMcmPdj1XRdgbXyEjsJS3cP
+        Yju6t4+E0mbAiWVtEQZzr6htkDj2jTA4OqJvo8yxd/4Hhp7Efx1CQ469t9jGX78z8AJvQSzbs4B2swAA
+        AABJRU5ErkJggg==
 </value>
   </data>
-  <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="tsSavestate.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>503, 17</value>
   </metadata>
   <metadata name="cmsSavestates.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
@@ -171,4 +171,7 @@
         wyFam1mWH9A/rzGMznhHIbFEvlcHN7JsHf9zFAp/AyLj4wC0O+1KAAAAAElFTkSuQmCC
 </value>
   </data>
+  <metadata name="timStatus.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>616, 17</value>
+  </metadata>
 </root>
