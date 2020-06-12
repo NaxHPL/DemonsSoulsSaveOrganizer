@@ -67,7 +67,7 @@ namespace DemonsSoulsSaveOrganizer {
                 return false;
             }
             else {
-                Profile profile = (Profile)obj;
+                Profile profile = obj as Profile;
                 return DisplayName.Equals(profile.DisplayName) && FullPath.Equals(profile.FullPath);
             }
         }

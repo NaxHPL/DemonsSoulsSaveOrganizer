@@ -82,11 +82,11 @@ namespace DemonsSoulsSaveOrganizer {
         }
 
         private void lstProfiles_SelectedIndexChanged(object sender, EventArgs e) {
-            if (lstProfiles.SelectedIndex == -1 || currentlySelectedProfile == (Profile)lstProfiles.SelectedItem) {
+            if (lstProfiles.SelectedIndex == -1 || currentlySelectedProfile == (lstProfiles.SelectedItem as Profile)) {
                 return;
             }
 
-            currentlySelectedProfile = (Profile)lstProfiles.SelectedItem;
+            currentlySelectedProfile = lstProfiles.SelectedItem as Profile;
             FillSavestates(currentlySelectedProfile);
         }
 
@@ -133,16 +133,16 @@ namespace DemonsSoulsSaveOrganizer {
                 return;
             }
 
-            LoadSavestate((Savestate)trvSavestates.SelectedNode.Tag);
+            LoadSavestate(trvSavestates.SelectedNode.Tag as Savestate);
         }
 
         private void cmsSavestates_ItemClicked(object sender, ToolStripItemClickedEventArgs e) {
             if (e.ClickedItem == tsmiRenameSavestate) {
-                RenameSavestate((Savestate)trvSavestates.SelectedNode.Tag);
+                RenameSavestate(trvSavestates.SelectedNode.Tag as Savestate);
             }
             else if (e.ClickedItem == tsmiDeleteSavestate) {
                 cmsSavestates.Close();
-                DeleteSavestate((Savestate)trvSavestates.SelectedNode.Tag);
+                DeleteSavestate(trvSavestates.SelectedNode.Tag as Savestate);
             }
         }
 
@@ -239,7 +239,7 @@ namespace DemonsSoulsSaveOrganizer {
                 return;
             }
 
-            RenameSavestate((Savestate)trvSavestates.SelectedNode.Tag);
+            RenameSavestate(trvSavestates.SelectedNode.Tag as Savestate);
         }
 
         private void GlobalKeyboardHook_KeyDownOrUp(object sender, GlobalKeyboardHookEventArgs e) {
@@ -255,6 +255,14 @@ namespace DemonsSoulsSaveOrganizer {
         private void trvSavestates_KeyPress(object sender, KeyPressEventArgs e) {
             // Prevents annoying ding noises when pressing keys
             e.Handled = true;
+        }
+
+        private void tsbReplaceSavestate_Click(object sender, EventArgs e) {
+            if (trvSavestates.SelectedNode == null) {
+                return;
+            }
+
+            ReplaceSavestate(trvSavestates.SelectedNode.Tag as Savestate);
         }
 
         #endregion
@@ -554,10 +562,10 @@ namespace DemonsSoulsSaveOrganizer {
 
         private void HandleSavestateKeyShortcuts(Keys key) {
             if (key == Keys.F2 && trvSavestates.SelectedNode != null) {
-                RenameSavestate((Savestate)trvSavestates.SelectedNode.Tag);
+                RenameSavestate(trvSavestates.SelectedNode.Tag as Savestate);
             }
             else if (key == Keys.Delete && trvSavestates.SelectedNode != null) {
-                DeleteSavestate((Savestate)trvSavestates.SelectedNode.Tag);
+                DeleteSavestate(trvSavestates.SelectedNode.Tag as Savestate);
             }
         }
 
@@ -570,6 +578,28 @@ namespace DemonsSoulsSaveOrganizer {
             lblStatus.Visible = true;
 
             timStatus.Start();
+        }
+
+        private string GetSavefileFolderName() {
+            return Path.GetFileName(settings.SavefileDirectory);
+        }
+
+        private void ReplaceSavestate(Savestate savestate) {
+            DialogResult result = MessageBox.Show($"Are you sure you want to replace \"{savestate.DisplayName}\"?", $"Replace {savestate.DisplayName}", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            
+            if (result != DialogResult.Yes) {
+                return;
+            }
+
+            try {
+                Directory.Delete(Path.Combine(savestate.FullPath, GetSavefileFolderName()), true);
+                CopySaveFolderAndContents(settings.SavefileDirectory, savestate.FullPath);
+
+                SetStatusText("Replace Successful!", Color.Orange);
+            }
+            catch (Exception e) {
+                MessageBox.Show($"An error occured while replacing the savestate:\n\n{e.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
