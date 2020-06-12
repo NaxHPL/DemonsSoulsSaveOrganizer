@@ -31,6 +31,6 @@ The Demon's Souls Save Organizer is a tool used for creating and loading savesta
 
 3. Select the desired savestate and click "Load Savestate". This will overwrite the game's current save data with your savestate.
 
-Warning: The characters shown in the load character menu may not reflect the characters that you just loaded. This is because the game only updates that info on start-up. The desired character will still be loaded assuming there is a character in that save slot to select. If you try to load a character from a slot that the savestate has no data for, you'll likely run into strange behaviour or the emulator will crash. Restarting the game will cause the load character menu to reflect any changes.
+    > Warning: The characters shown in the load character menu may not reflect the characters that you just loaded. This is because the game only updates that info on start-up. The desired character will still be loaded assuming there is a character in that save slot to select. If you try to load a character from a slot that the savestate has no data for, you'll likely run into strange behaviour or the emulator will crash. Restarting the game will cause the load character menu to reflect any changes.
 
 4. Load the desired character.
