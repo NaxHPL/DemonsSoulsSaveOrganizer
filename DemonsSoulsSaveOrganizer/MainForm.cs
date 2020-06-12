@@ -4,6 +4,7 @@ using System.IO;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Diagnostics;
+using LowLevelHooking;
 
 namespace DemonsSoulsSaveOrganizer {
 
@@ -21,6 +22,8 @@ namespace DemonsSoulsSaveOrganizer {
             InitializeDirectories();
             RefreshProfilesList();
             lblStatus.Visible = false;
+
+            Program.GlobalKeyboardHook.KeyDownOrUp += GlobalKeyboardHook_KeyDownOrUp;
 
             trvSavestates.Select();
         }
@@ -211,7 +214,12 @@ namespace DemonsSoulsSaveOrganizer {
         }
 
         private void cmsSettings_ItemClicked(object sender, ToolStripItemClickedEventArgs e) {
-            if (e.ClickedItem == tsmiAbout) {
+            if (e.ClickedItem == tsmiSettings) {
+                using (SettingsForm settingsForm = new SettingsForm()) {
+                    settingsForm.ShowDialog();
+                }
+            }
+            else if (e.ClickedItem == tsmiAbout) {
                 using (AboutForm aboutForm = new AboutForm()) {
                     aboutForm.ShowDialog();
                 }
@@ -227,7 +235,26 @@ namespace DemonsSoulsSaveOrganizer {
         }
 
         private void tsbEditSavestate_Click(object sender, EventArgs e) {
+            if (trvSavestates.SelectedNode == null) {
+                return;
+            }
+
             RenameSavestate((Savestate)trvSavestates.SelectedNode.Tag);
+        }
+
+        private void GlobalKeyboardHook_KeyDownOrUp(object sender, GlobalKeyboardHookEventArgs e) {
+            if (!e.IsUp || !settings.GlobalHotkeysEnabled) {
+                return;
+            }
+
+            if ((int)e.KeyCode == settings.LoadSavestateHotkey) {
+                tsbLoadSavestate.PerformClick();
+            }
+        }
+
+        private void trvSavestates_KeyPress(object sender, KeyPressEventArgs e) {
+            // Prevents annoying ding noises when pressing keys
+            e.Handled = true;
         }
 
         #endregion
@@ -318,7 +345,7 @@ namespace DemonsSoulsSaveOrganizer {
 
             if (Profile.Exists(profileName)) {
                 MessageBox.Show($"A profile named \"{profileName}\" already exists!", "Profile Already Exists", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                //btnAddProfile.PerformClick();
+                tsbAddProfile.PerformClick();
                 return;
             }
 

@@ -1,12 +1,10 @@
 ﻿using System.Windows.Forms;
-using System.IO;
 
 namespace DemonsSoulsSaveOrganizer {
 
     public partial class NameEditForm : Form {
 
         private static readonly char[] invalidCharacters = { '<', '>', ':', '"', '/', '\\', '|', '?', '*' };
-        private static readonly Properties.Settings settings = Properties.Settings.Default;
 
         public string Input { get; set; }
 

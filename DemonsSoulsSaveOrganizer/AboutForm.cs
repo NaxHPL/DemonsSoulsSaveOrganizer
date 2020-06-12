@@ -34,5 +34,9 @@ namespace DemonsSoulsSaveOrganizer {
         private void picGithub_Click(object sender, EventArgs e) {
             Process.Start(settings.GithubRepository);
         }
+
+        private void btnClose_Click(object sender, EventArgs e) {
+            Close();
+        }
     }
 }

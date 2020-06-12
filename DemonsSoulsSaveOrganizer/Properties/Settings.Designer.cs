@@ -67,10 +67,34 @@ namespace DemonsSoulsSaveOrganizer.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://github.com/NaxHPL/DemonsSoulsSaveOrganizer#getting-started")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://github.com/NaxHPL/DemonsSoulsSaveOrganizer#demons-souls-save-organizer")]
         public string HelpLink {
             get {
                 return ((string)(this["HelpLink"]));
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool GlobalHotkeysEnabled {
+            get {
+                return ((bool)(this["GlobalHotkeysEnabled"]));
+            }
+            set {
+                this["GlobalHotkeysEnabled"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int LoadSavestateHotkey {
+            get {
+                return ((int)(this["LoadSavestateHotkey"]));
+            }
+            set {
+                this["LoadSavestateHotkey"] = value;
             }
         }
     }

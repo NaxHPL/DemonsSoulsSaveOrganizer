@@ -23,39 +23,65 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            System.Windows.Forms.Label label1;
+            System.Windows.Forms.Label label2;
+            System.Windows.Forms.Label label3;
+            System.Windows.Forms.Label label4;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AboutForm));
             this.lblVersion = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.hlkDeveloper = new System.Windows.Forms.LinkLabel();
             this.hlkGithubRepository = new System.Windows.Forms.LinkLabel();
-            this.label4 = new System.Windows.Forms.Label();
             this.picTwitter = new System.Windows.Forms.PictureBox();
             this.picGithub = new System.Windows.Forms.PictureBox();
+            this.btnClose = new System.Windows.Forms.Button();
+            label1 = new System.Windows.Forms.Label();
+            label2 = new System.Windows.Forms.Label();
+            label3 = new System.Windows.Forms.Label();
+            label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picTwitter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picGithub)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(153, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Demon\'s Souls Save Organizer";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            label1.AutoSize = true;
+            label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label1.Location = new System.Drawing.Point(12, 9);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(153, 13);
+            label1.TabIndex = 0;
+            label1.Text = "Demon\'s Souls Save Organizer";
+            label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 35);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Version:";
+            label2.AutoSize = true;
+            label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label2.Location = new System.Drawing.Point(12, 35);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(53, 13);
+            label2.TabIndex = 1;
+            label2.Text = "Version:";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label3.Location = new System.Drawing.Point(12, 73);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(89, 13);
+            label3.TabIndex = 3;
+            label3.Text = "Developed by:";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label4.Location = new System.Drawing.Point(12, 123);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(83, 13);
+            label4.TabIndex = 6;
+            label4.Text = "Source code:";
             // 
             // lblVersion
             // 
@@ -65,16 +91,6 @@
             this.lblVersion.Size = new System.Drawing.Size(22, 13);
             this.lblVersion.TabIndex = 2;
             this.lblVersion.Text = "0.0";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(12, 73);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(89, 13);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Developed by:";
             // 
             // hlkDeveloper
             // 
@@ -98,16 +114,6 @@
             this.hlkGithubRepository.TabStop = true;
             this.hlkGithubRepository.Text = "Github repository";
             this.hlkGithubRepository.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.hlkGithubRepository_LinkClicked);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(12, 123);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(83, 13);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Source code:";
             // 
             // picTwitter
             // 
@@ -133,21 +139,36 @@
             this.picGithub.TabStop = false;
             this.picGithub.Click += new System.EventHandler(this.picGithub_Click);
             // 
+            // btnClose
+            // 
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnClose.Location = new System.Drawing.Point(125, 176);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(75, 23);
+            this.btnClose.TabIndex = 9;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
             // AboutForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(212, 176);
+            this.CancelButton = this.btnClose;
+            this.ClientSize = new System.Drawing.Size(212, 211);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.picGithub);
             this.Controls.Add(this.picTwitter);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(label4);
             this.Controls.Add(this.hlkGithubRepository);
             this.Controls.Add(this.hlkDeveloper);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(label3);
             this.Controls.Add(this.lblVersion);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(label2);
+            this.Controls.Add(label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AboutForm";
@@ -162,15 +183,11 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblVersion;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.LinkLabel hlkDeveloper;
         private System.Windows.Forms.LinkLabel hlkGithubRepository;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.PictureBox picTwitter;
         private System.Windows.Forms.PictureBox picGithub;
+        private System.Windows.Forms.Button btnClose;
     }
 }

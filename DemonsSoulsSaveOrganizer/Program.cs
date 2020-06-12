@@ -1,16 +1,21 @@
-﻿using System;
+﻿using LowLevelHooking;
+using System;
 using System.Windows.Forms;
 
 namespace DemonsSoulsSaveOrganizer {
+
     static class Program {
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
+
+        public static GlobalKeyboardHook GlobalKeyboardHook { get; private set; }
+
         [STAThread]
         static void Main() {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+
+            using (GlobalKeyboardHook = new GlobalKeyboardHook()) {
+                Application.Run(new MainForm());
+            }
         }
     }
 }

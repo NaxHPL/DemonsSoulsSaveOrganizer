@@ -15,7 +15,13 @@
       <Value Profile="(Default)">https://twitter.com/NaxHPL</Value>
     </Setting>
     <Setting Name="HelpLink" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">https://github.com/NaxHPL/DemonsSoulsSaveOrganizer#getting-started</Value>
+      <Value Profile="(Default)">https://github.com/NaxHPL/DemonsSoulsSaveOrganizer#demons-souls-save-organizer</Value>
+    </Setting>
+    <Setting Name="GlobalHotkeysEnabled" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="LoadSavestateHotkey" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
     </Setting>
   </Settings>
 </SettingsFile>
