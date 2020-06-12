@@ -2,7 +2,7 @@
 The Demon's Souls Save Organizer is a tool used for creating and loading savestates for Demon's Souls running on emulator.
 
 ## Requirements
-+ Microsoft .NET Framework 4.8
++ [Microsoft .NET Framework 4.8](https://dotnet.microsoft.com/download/dotnet-framework/net48)
 
 ## Getting Started
 1. Click the top "Browse" button and choose the directory that contains the save data files for Demon's Souls. It will be named either "BLUS30443DEMONSS005" or "BLES00932DEMONSS005" depending on your game's version and can be found in "...\RPCS3\dev_hdd0\home\00000001\savedata\".
@@ -34,3 +34,6 @@ The Demon's Souls Save Organizer is a tool used for creating and loading savesta
     > Warning: The characters shown in the load character menu may not reflect the characters that you just loaded. This is because the game only updates that info on start-up. The desired character will still be loaded assuming there is a character in that save slot to select. If you try to load a character from a slot that the savestate has no data for, you'll likely run into strange behaviour or the emulator will crash. Restarting the game will cause the load character menu to reflect any changes.
 
 4. Load the desired character.
+
+## Credits
+[LowLevelHooking](https://github.com/jnm2/LowLevelHooking) by Joseph N. Musser II
