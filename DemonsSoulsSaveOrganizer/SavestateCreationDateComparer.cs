@@ -22,10 +22,10 @@ namespace DemonsSoulsSaveOrganizer {
                 return 0;
             }
 
-            DirectoryInfo save1DirInfo = new DirectoryInfo(save1.FullPath);
-            DirectoryInfo save2DirInfo = new DirectoryInfo(save2.FullPath);
+            DateTime save1CreationTime = Directory.GetCreationTimeUtc(save1.FullPath);
+            DateTime save2CreationTime = Directory.GetCreationTimeUtc(save2.FullPath);
 
-            return DateTime.Compare(save1DirInfo.CreationTimeUtc, save2DirInfo.CreationTimeUtc);
+            return DateTime.Compare(save1CreationTime, save2CreationTime);
         }
     }
 }
