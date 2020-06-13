@@ -135,12 +135,18 @@
   <metadata name="tsProfiles.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>377, 17</value>
   </metadata>
-  <metadata name="tsProfiles.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>False</value>
-  </metadata>
-  <metadata name="tsProfiles.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>377, 17</value>
-  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="tsbAddProfile.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEISURBVDhPlZMxDoJAEEU/NnoDLa2MHoH72JhYcAGiV7Cx
+        sWBttDMWeiMSejW2OJ9hQdwVdJLHkp0/P7vDACcSjLFHLOtZ1lTIhIuwFialyhM5AhgspPAuwtzLDk9Z
+        I3kLyqoyuLHHqSG2BVs8nH2DqzzfTAyWjkgJhdnHniXSYt5Lj+aKEoyEgTenNdITbY4rIG0GypoG7LAv
+        +YvBhQb8THnRrARTbNCvsEETC3tSNzajAb+1vVOIA4YVK/RKA55EoabuWcokB+b9WDVdV2CtvMROwtLd
+        g9iO7u0jobQZcGJZW4TB3CtqGySOfSMMjo7o2yhz7J3/gaEn8V+H0JBj7y228dfvDLwATcUsy99nFt0A
+        AAAASUVORK5CYII=
+</value>
+  </data>
   <metadata name="grbSavestates.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
@@ -149,6 +155,9 @@
   </metadata>
   <metadata name="tsSavestate.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>478, 17</value>
+  </metadata>
+  <metadata name="toolStripLabel1.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
   </metadata>
   <metadata name="cmsSavestates.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -162,7 +171,6 @@
   <metadata name="timStatus.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>591, 17</value>
   </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="picGear.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAABRJJREFUaEPt
@@ -188,17 +196,6 @@
         qdE9fkzDK1icPka8uzlcgY4tvePL3gndKh1v8uP0oINV7JHfpy0mHbjy7RDooBaNXeRGk/CsoeYeYHkI
         dJCMr2wnOka5VkDPnRaMykTPsyw/gLETIaMRxIr/DsvyA/TqYcmsRHytXSzLD2ihkcyK7FglluUHnApl
         wyFam1mWH9A/rzGMznhHIbFEvlcHN7JsHf9zFAp/AyLj4wC0O+1KAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="tsbAddProfile.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEISURBVDhPlZMxDoJAEEU/NnoDLa2MHoH72JhYcAGiV7Cx
-        sWBttDMWeiMSejW2OJ9hQdwVdJLHkp0/P7vDACcSjLFHLOtZ1lTIhIuwFialyhM5AhgspPAuwtzLDk9Z
-        I3kLyqoyuLHHqSG2BVs8nH2DqzzfTAyWjkgJhdnHniXSYt5Lj+aKEoyEgTenNdITbY4rIG0GypoG7LAv
-        +YvBhQb8THnRrARTbNCvsEETC3tSNzajAb+1vVOIA4YVK/RKA55EoabuWcokB+b9WDVdV2CtvMROwtLd
-        g9iO7u0jobQZcGJZW4TB3CtqGySOfSMMjo7o2yhz7J3/gaEn8V+H0JBj7y228dfvDLwATcUsy99nFt0A
-        AAAASUVORK5CYII=
 </value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

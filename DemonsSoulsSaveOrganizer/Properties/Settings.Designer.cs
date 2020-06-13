@@ -97,5 +97,17 @@ namespace DemonsSoulsSaveOrganizer.Properties {
                 this["LoadSavestateHotkey"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int SortByIndex {
+            get {
+                return ((int)(this["SortByIndex"]));
+            }
+            set {
+                this["SortByIndex"] = value;
+            }
+        }
     }
 }

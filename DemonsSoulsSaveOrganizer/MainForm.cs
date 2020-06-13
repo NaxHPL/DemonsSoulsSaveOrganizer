@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Diagnostics;
 using LowLevelHooking;
+using System.Collections;
 
 namespace DemonsSoulsSaveOrganizer {
 
@@ -21,7 +22,9 @@ namespace DemonsSoulsSaveOrganizer {
 
             InitializeDirectories();
             RefreshProfilesList();
+
             lblStatus.Visible = false;
+            tscbSorting.SelectedIndex = settings.SortByIndex;
 
             Program.GlobalKeyboardHook.KeyDownOrUp += GlobalKeyboardHook_KeyDownOrUp;
 
@@ -91,48 +94,10 @@ namespace DemonsSoulsSaveOrganizer {
         }
 
         private void tsbImportSavestate_Click(object sender, EventArgs e) {
-            if (string.IsNullOrWhiteSpace(settings.SavefileDirectory)) {
-                DialogResult result = MessageBox.Show("Please setup your savefile directory before importing savestates.", "Setup Required", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-
-                if (result == DialogResult.OK) {
-                    btnBrowseSavefileDir.PerformClick();
-                }
-
-                return;
-            }
-
-            if (lstProfiles.Items.Count == 0) {
-                DialogResult result = MessageBox.Show("Please create a profile before importing savestates.", "Profile Required", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-
-                if (result == DialogResult.OK) {
-                    tsbAddProfile.PerformClick();
-                }
-
-                return;
-            }
-
-            if (lstProfiles.SelectedIndex == -1) {
-                return;
-            }
-
             ImportSavestate(currentlySelectedProfile);
         }
 
         private void tsbLoadSavestate_Click(object sender, EventArgs e) {
-            if (string.IsNullOrWhiteSpace(settings.SavefileDirectory)) {
-                DialogResult result = MessageBox.Show("Please setup your savefile directory before loading savestates.", "Setup Required", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-
-                if (result == DialogResult.OK) {
-                    btnBrowseSavefileDir.PerformClick();
-                }
-
-                return;
-            }
-
-            if (trvSavestates.SelectedNode == null) {
-                return;
-            }
-
             LoadSavestate(trvSavestates.SelectedNode.Tag as Savestate);
         }
 
@@ -248,7 +213,7 @@ namespace DemonsSoulsSaveOrganizer {
             }
 
             if ((int)e.KeyCode == settings.LoadSavestateHotkey) {
-                tsbLoadSavestate.PerformClick();
+                LoadSavestate(trvSavestates.SelectedNode.Tag as Savestate);
             }
         }
 
@@ -263,6 +228,20 @@ namespace DemonsSoulsSaveOrganizer {
             }
 
             ReplaceSavestate(trvSavestates.SelectedNode.Tag as Savestate);
+        }
+
+        private void tscbSorting_SelectedIndexChanged(object sender, EventArgs e) {
+            if (tscbSorting.SelectedIndex == 0) {
+                trvSavestates.TreeViewNodeSorter = null;
+            }
+            else if (tscbSorting.SelectedIndex == 1) {
+                trvSavestates.TreeViewNodeSorter = new SavestateCreationDateComparer();
+            }
+
+            trvSavestates.Sort();
+
+            settings.SortByIndex = tscbSorting.SelectedIndex;
+            settings.Save();
         }
 
         #endregion
@@ -437,7 +416,39 @@ namespace DemonsSoulsSaveOrganizer {
             trvSavestates.Nodes.Clear();
         }
 
+        private bool ReadyForImport() {
+            if (string.IsNullOrWhiteSpace(settings.SavefileDirectory)) {
+                DialogResult result = MessageBox.Show("Please setup your savefile directory before importing savestates.", "Setup Required", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+
+                if (result == DialogResult.OK) {
+                    btnBrowseSavefileDir.PerformClick();
+                }
+
+                return false;
+            }
+
+            if (lstProfiles.Items.Count == 0) {
+                DialogResult result = MessageBox.Show("Please create a profile before importing savestates.", "Profile Required", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+
+                if (result == DialogResult.OK) {
+                    tsbAddProfile.PerformClick();
+                }
+
+                return false;
+            }
+
+            if (lstProfiles.SelectedIndex == -1) {
+                return false;
+            }
+
+            return true;
+        }
+
         private void ImportSavestate(Profile profile) {
+            if (!ReadyForImport()) {
+                return;
+            }
+
             string saveName = GetNewSavestateName(profile.FullPath);
             string savePath = Path.Combine(profile.FullPath, saveName);
 
@@ -495,7 +506,29 @@ namespace DemonsSoulsSaveOrganizer {
             }
         }
 
+        private bool ReadyForLoad() {
+            if (string.IsNullOrWhiteSpace(settings.SavefileDirectory)) {
+                DialogResult result = MessageBox.Show("Please setup your savefile directory before loading savestates.", "Setup Required", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+
+                if (result == DialogResult.OK) {
+                    btnBrowseSavefileDir.PerformClick();
+                }
+
+                return false;
+            }
+
+            if (trvSavestates.SelectedNode == null) {
+                return false;
+            }
+
+            return true;
+        }
+
         private void LoadSavestate(Savestate savestate) {
+            if (!ReadyForLoad()) {
+                return;
+            }
+
             try {
                 Directory.Delete(settings.SavefileDirectory, true);
                 Directory.CreateDirectory(settings.SavefileDirectory);
